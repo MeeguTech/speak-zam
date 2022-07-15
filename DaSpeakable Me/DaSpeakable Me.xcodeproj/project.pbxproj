@@ -9,11 +9,6 @@
 /* Begin PBXBuildFile section */
 		634FB52128702FCF009F00C1 /* IndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634FB52028702FCF009F00C1 /* IndicatorViewController.swift */; };
 		634FB52328702FE3009F00C1 /* IndicatorStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 634FB52228702FE3009F00C1 /* IndicatorStoryboard.storyboard */; };
-		6390BCF6287C46020079302B /* PracticeDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6390BCF4287C46020079302B /* PracticeDataModel.xcdatamodeld */; };
-		6390BCF9287C6D370079302B /* Practice+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390BCF7287C6D370079302B /* Practice+CoreDataClass.swift */; };
-		6390BCFA287C6D370079302B /* Practice+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390BCF8287C6D370079302B /* Practice+CoreDataProperties.swift */; };
-		6390BCFD287D53DB0079302B /* ContextService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390BCFC287D53DB0079302B /* ContextService.swift */; };
-		6390BCFF287D54970079302B /* PracticeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390BCFE287D54970079302B /* PracticeService.swift */; };
 		63A2E205286EF02400C67464 /* PracticeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2E203286EF02400C67464 /* PracticeTableViewCell.swift */; };
 		63A2E206286EF02400C67464 /* PracticeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63A2E204286EF02400C67464 /* PracticeTableViewCell.xib */; };
 		63A2E209286F352000C67464 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2E208286F352000C67464 /* ResultViewController.swift */; };
@@ -30,6 +25,7 @@
 		AC4C43F4286609E300CAEFB7 /* DaSpeakable_MeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4C43F3286609E300CAEFB7 /* DaSpeakable_MeUITestsLaunchTests.swift */; };
 		AC4C44072866136800CAEFB7 /* FillerWordClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = AC4C44062866136800CAEFB7 /* FillerWordClassifier.mlmodel */; };
 		AC70EC28286EE3DD001398AB /* PracticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC70EC27286EE3DD001398AB /* PracticeModel.swift */; };
+		AC70EC2B286EE7A1001398AB /* PracticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC70EC2A286EE7A1001398AB /* PracticeViewModel.swift */; };
 		AC790B82286AD35700368799 /* TimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC790B81286AD35700368799 /* TimeHelper.swift */; };
 		AC8DF25E286C085D001ADFF3 /* CameraHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DF25D286C085D001ADFF3 /* CameraHelper.swift */; };
 		AC8DF260286C09BB001ADFF3 /* RecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DF25F286C09BB001ADFF3 /* RecordingViewController.swift */; };
@@ -60,11 +56,6 @@
 /* Begin PBXFileReference section */
 		634FB52028702FCF009F00C1 /* IndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorViewController.swift; sourceTree = "<group>"; };
 		634FB52228702FE3009F00C1 /* IndicatorStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IndicatorStoryboard.storyboard; sourceTree = "<group>"; };
-		6390BCF5287C46020079302B /* PracticeDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PracticeDataModel.xcdatamodel; sourceTree = "<group>"; };
-		6390BCF7287C6D370079302B /* Practice+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Practice+CoreDataClass.swift"; sourceTree = "<group>"; };
-		6390BCF8287C6D370079302B /* Practice+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Practice+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		6390BCFC287D53DB0079302B /* ContextService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextService.swift; sourceTree = "<group>"; };
-		6390BCFE287D54970079302B /* PracticeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeService.swift; sourceTree = "<group>"; };
 		63A2E203286EF02400C67464 /* PracticeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeTableViewCell.swift; sourceTree = "<group>"; };
 		63A2E204286EF02400C67464 /* PracticeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PracticeTableViewCell.xib; sourceTree = "<group>"; };
 		63A2E208286F352000C67464 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +76,7 @@
 		AC4C43F3286609E300CAEFB7 /* DaSpeakable_MeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaSpeakable_MeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		AC4C44062866136800CAEFB7 /* FillerWordClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FillerWordClassifier.mlmodel; sourceTree = "<group>"; };
 		AC70EC27286EE3DD001398AB /* PracticeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeModel.swift; sourceTree = "<group>"; };
+		AC70EC2A286EE7A1001398AB /* PracticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewModel.swift; sourceTree = "<group>"; };
 		AC790B81286AD35700368799 /* TimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeHelper.swift; sourceTree = "<group>"; };
 		AC8DF25D286C085D001ADFF3 /* CameraHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHelper.swift; sourceTree = "<group>"; };
 		AC8DF25F286C09BB001ADFF3 /* RecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewController.swift; sourceTree = "<group>"; };
@@ -120,24 +112,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		632E4AEC287FC17B00440B43 /* PracticeItem */ = {
-			isa = PBXGroup;
-			children = (
-				6390BCF8287C6D370079302B /* Practice+CoreDataProperties.swift */,
-				6390BCF7287C6D370079302B /* Practice+CoreDataClass.swift */,
-			);
-			path = PracticeItem;
-			sourceTree = "<group>";
-		};
-		632E4AED287FC1D500440B43 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				63A2E202286EEFFF00C67464 /* PracticeTableViewCell */,
-				63A2E20C286F368600C67464 /* ResultTableViewCell */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		634FB51F28702F94009F00C1 /* IndicatorView */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,18 +120,10 @@
 			path = IndicatorView;
 			sourceTree = "<group>";
 		};
-		6390BCFB287D53B00079302B /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				6390BCFC287D53DB0079302B /* ContextService.swift */,
-				6390BCFE287D54970079302B /* PracticeService.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
 		63A2E201286EEDC300C67464 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
+				63A2E202286EEFFF00C67464 /* PracticeTableViewCell */,
 				AC8DF268286C1EE9001ADFF3 /* MainViewController.swift */,
 			);
 			path = MainViewController;
@@ -175,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				634FB51F28702F94009F00C1 /* IndicatorView */,
+				63A2E20C286F368600C67464 /* ResultTableViewCell */,
 				63A2E208286F352000C67464 /* ResultViewController.swift */,
 			);
 			path = ResultViewController;
@@ -213,10 +180,10 @@
 			children = (
 				AC4C44062866136800CAEFB7 /* FillerWordClassifier.mlmodel */,
 				AC4C440328660A1800CAEFB7 /* Core */,
-				6390BCFB287D53B00079302B /* Services */,
 				AC4C4400286609EF00CAEFB7 /* Model */,
 				AC4C4401286609F600CAEFB7 /* View */,
 				ACAFEA352869BE9000EE148D /* Helper */,
+				AC4C4402286609FC00CAEFB7 /* Controller */,
 				AC4C43DE286609E300CAEFB7 /* Info.plist */,
 			);
 			path = "DaSpeakable Me";
@@ -242,9 +209,8 @@
 		AC4C4400286609EF00CAEFB7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AC70EC29286EE785001398AB /* ViewModel */,
 				AC70EC27286EE3DD001398AB /* PracticeModel.swift */,
-				6390BCF4287C46020079302B /* PracticeDataModel.xcdatamodeld */,
-				632E4AEC287FC17B00440B43 /* PracticeItem */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -252,24 +218,22 @@
 		AC4C4401286609F600CAEFB7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				ACF072A32873CE8D00FB8E10 /* Storyboards */,
 				AC4C43D3286609E200CAEFB7 /* Main.storyboard */,
 				AC4C43DB286609E300CAEFB7 /* LaunchScreen.storyboard */,
-				AC4C4402286609FC00CAEFB7 /* Controllers */,
-				632E4AED287FC1D500440B43 /* Cells */,
-				ACF072A32873CE8D00FB8E10 /* Storyboards */,
 				AC8DF26B286C2113001ADFF3 /* CustomView */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		AC4C4402286609FC00CAEFB7 /* Controllers */ = {
+		AC4C4402286609FC00CAEFB7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				ACF072A62873DED200FB8E10 /* RecordingViewController */,
 				63A2E201286EEDC300C67464 /* MainViewController */,
 				63A2E207286F34E400C67464 /* ResultViewController */,
 			);
-			path = Controllers;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		AC4C440328660A1800CAEFB7 /* Core */ = {
@@ -280,6 +244,14 @@
 				AC4C43D9286609E300CAEFB7 /* Assets.xcassets */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		AC70EC29286EE785001398AB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AC70EC2A286EE7A1001398AB /* PracticeViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		AC8DF26B286C2113001ADFF3 /* CustomView */ = {
@@ -482,15 +454,11 @@
 				ACAFEA372869C0B500EE148D /* SpeakHelper.swift in Sources */,
 				AC70EC28286EE3DD001398AB /* PracticeModel.swift in Sources */,
 				AC790B82286AD35700368799 /* TimeHelper.swift in Sources */,
-				6390BCFF287D54970079302B /* PracticeService.swift in Sources */,
-				6390BCFD287D53DB0079302B /* ContextService.swift in Sources */,
 				AC4C43CE286609E200CAEFB7 /* AppDelegate.swift in Sources */,
-				6390BCF6287C46020079302B /* PracticeDataModel.xcdatamodeld in Sources */,
+				AC70EC2B286EE7A1001398AB /* PracticeViewModel.swift in Sources */,
 				AC8DF260286C09BB001ADFF3 /* RecordingViewController.swift in Sources */,
-				6390BCFA287C6D370079302B /* Practice+CoreDataProperties.swift in Sources */,
 				AC4C44072866136800CAEFB7 /* FillerWordClassifier.mlmodel in Sources */,
 				63A2E205286EF02400C67464 /* PracticeTableViewCell.swift in Sources */,
-				6390BCF9287C6D370079302B /* Practice+CoreDataClass.swift in Sources */,
 				63A2E217286F37A700C67464 /* ResultTableViewCell.swift in Sources */,
 				AC4C43D0286609E200CAEFB7 /* SceneDelegate.swift in Sources */,
 			);
@@ -669,7 +637,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z89G6VHQ8A;
+				DEVELOPMENT_TEAM = R495F663N6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DaSpeakable Me/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = SpeakZam;
@@ -684,13 +652,12 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "gilapo.DaSpeakable-Me";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.speakZam-MC2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -705,7 +672,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z89G6VHQ8A;
+				DEVELOPMENT_TEAM = R495F663N6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DaSpeakable Me/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = SpeakZam;
@@ -720,13 +687,12 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "gilapo.DaSpeakable-Me";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.speakZam-MC2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -850,19 +816,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		6390BCF4287C46020079302B /* PracticeDataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				6390BCF5287C46020079302B /* PracticeDataModel.xcdatamodel */,
-			);
-			currentVersion = 6390BCF5287C46020079302B /* PracticeDataModel.xcdatamodel */;
-			path = PracticeDataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = AC4C43C2286609E200CAEFB7 /* Project object */;
 }

@@ -16,9 +16,9 @@ struct PracticeDetail{
     var practiceSmoothRateDetail: Double? = 0
     var practiceVideoUrlDetail:String? = ""
     // fw -> filler word
-    var practiceFwEhDetail: Int64? = 0
-    var practiceFwHaDetail: Int64? = 0
-    var practiceFwHmDetail: Int64? = 0
+    var practiceFwEhDetail: Int? = 0
+    var practiceFwHaDetail: Int? = 0
+    var practiceFwHmDetail: Int? = 0
     var practiceAvatarImageDetail:String? = ""
     var practiceProgressBarDetail:String = ""
     
@@ -48,8 +48,7 @@ class ResultViewController: UIViewController {
     
     
     //var overallScore:Int = 0
-    //let viewModel: PracticeViewModel = PracticeViewModel()
-    var allPractice = PracticeService().getAllPractice()
+    let viewModel: PracticeViewModel = PracticeViewModel()
     
     var selectedHistory:[Int] = []
     //var latestRecord:Int?
@@ -73,7 +72,7 @@ class ResultViewController: UIViewController {
         configDetailPage()
         viewConfig()
         
-        //        if selectedHistory.isEmpty || selectedHistory[0] != allPractice.count-1{
+        //        if selectedHistory.isEmpty || selectedHistory[0] != viewModel.items.count-1{
         //            replayPracticeVideoButton.isHidden = true
         //        }
         //replayPracticeVideoButton.isHidden = true
@@ -99,18 +98,18 @@ class ResultViewController: UIViewController {
 
     
     func viewConfig(){
-        //let currentPracticeIndex = allPractice.count-1
+        //let currentPracticeIndex = viewModel.items.count-1
         //print(selectedHistory)
-        //overallScore = Int((allPractice[currentPracticeIndex].practiceWPM + allPractice[currentPracticeIndex].practiceArticulation + allPractice[currentPracticeIndex].practiceSmoothRate)/3)
+        //overallScore = Int((viewModel.items[currentPracticeIndex].practiceWPM + viewModel.items[currentPracticeIndex].practiceArticulation + viewModel.items[currentPracticeIndex].practiceSmoothRate)/3)
         
-        let score = allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceOverallScore
+        let score = viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].overallScore
         
         resultHeader.cornerRadius(usingCorners: [.topLeft,.bottomRight], cornerRadii: CGSize(width: 50, height: 50))
         resultHeader.backgroundColor = UIColor(patternImage: UIImage(named: "badgeGradient")!)
         
-        resultLabelTitle.text = "\(String(describing: allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceTitle)) Summary"
+        resultLabelTitle.text = "\(viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].practiceTitle) Summary"
         
-        resultOveralScoreLabel.text = "\(Int(allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceOverallScore))%"
+        resultOveralScoreLabel.text = "\(Int(viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].overallScore))%"
         
         if score > 90 {
             starsOneImage.image = UIImage(named: "star")
@@ -144,39 +143,39 @@ class ResultViewController: UIViewController {
             starsFiveImage.image = UIImage(named: "unfilledStar")
         }
         
-        print(allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceOverallScore)
+        print(viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].overallScore)
         //print(overallScore)
     }
     
     func configDetailPage(){
         
-        let currentPracticeIndex = allPractice.count-1
+        let currentPracticeIndex = viewModel.items.count-1
         
         let wpmDetail = PracticeDetail(
             practiceTitleDetail : "Speaking Pace",
-            practiceWPMDetail: allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceWPM,
+            practiceWPMDetail: viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].practiceWPM,
             practiceAvatarImageDetail: "wpmShadow",
-            practiceProgressBarDetail: "indicatorProgressBarImg", practiceDescription: "Speaking Pace or Words per minute (WPM) is the number of words processed per minute, most commonly used to measure and denote the speed of typing or reading speed.", practiceRanking: getDescriptionWPM(practiceWPM: allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceWPM), practiceScore: allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceWPM)
+            practiceProgressBarDetail: "indicatorProgressBarImg", practiceDescription: "Speaking Pace or Words per minute (WPM) is the number of words processed per minute, most commonly used to measure and denote the speed of typing or reading speed.", practiceRanking: getDescriptionWPM(practiceWPM: viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].practiceWPM), practiceScore: viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].practiceWPM)
         
         let articulationDetail = PracticeDetail(
             practiceTitleDetail : "Articulation",
-            practiceArticulationDetail: allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceArticulation,
+            practiceArticulationDetail: viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].practiceArticulation,
             practiceAvatarImageDetail: "wpmShadow",
-            practiceProgressBarDetail: "indicatorProgressBarImg",practiceDescription: "Articulation is defined as the act of speaking clearly.",practiceRanking: getDescriptionArticulation(practiceArticulation: allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceArticulation), practiceScore: allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceArticulation)
+            practiceProgressBarDetail: "indicatorProgressBarImg",practiceDescription: "Articulation is defined as the act of speaking clearly.",practiceRanking: getDescriptionArticulation(practiceArticulation: viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].practiceArticulation), practiceScore: viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].practiceArticulation)
         
         let smoothRateDetail = PracticeDetail(
             practiceTitleDetail : "Fluency",
-            practiceSmoothRateDetail: allPractice[currentPracticeIndex].practiceSmoothRate,
+            practiceSmoothRateDetail: viewModel.items[currentPracticeIndex].practiceSmoothRate,
             practiceAvatarImageDetail: "wpmShadow",
-            practiceProgressBarDetail: "indicatorProgressBarImg", practiceDescription: "Smoothness is defined as the act of speaking fluently.", practiceRanking: getDescriptionSmoothRate(practiceSmoothRate: allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceSmoothRate), practiceScore: allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceSmoothRate)
+            practiceProgressBarDetail: "indicatorProgressBarImg", practiceDescription: "Smoothness is defined as the act of speaking fluently.", practiceRanking: getDescriptionSmoothRate(practiceSmoothRate: viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].practiceSmoothRate), practiceScore: viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].practiceSmoothRate)
         
         let fillerWordsDetail = PracticeDetail(
             practiceTitleDetail : "Filler Word",
-            practiceWPMDetail: allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceWPM,
-            practiceFwEhDetail: allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceFwEh,
-            practiceFwHaDetail: allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceFwHa,
-            practiceFwHmDetail: allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceFwHm,
-            practiceAvatarImageDetail: "wpmShadow", practiceProgressBarDetail:"indicatorProgressBarImg", practiceDescription: "A filler word is an apparently meaningless word, phrase, or sound that marks a pause or hesitation in speech.", practiceScore: Double((allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceFwEh+allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceFwHm+allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceFwHa)))
+            practiceWPMDetail: viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].practiceWPM,
+            practiceFwEhDetail: viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].practiceFwEh,
+            practiceFwHaDetail: viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].practiceFwHa,
+            practiceFwHmDetail: viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].practiceFwHm,
+            practiceAvatarImageDetail: "wpmShadow", practiceProgressBarDetail:"indicatorProgressBarImg", practiceDescription: "A filler word is an apparently meaningless word, phrase, or sound that marks a pause or hesitation in speech.", practiceScore: Double((viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].practiceFwEh+viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].practiceFwHm+viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].practiceFwHa)))
         
         practiceDetailList = [wpmDetail, articulationDetail, smoothRateDetail, fillerWordsDetail]
     }
@@ -244,7 +243,7 @@ class ResultViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        allPractice = PracticeService().getAllPractice()
+        self.viewModel.getItems()
         self.resultTableView.reloadData()
     }
     
@@ -258,10 +257,10 @@ class ResultViewController: UIViewController {
     //MARK: replay practice
     
     @IBAction func didTapVideoReplay(_ sender: Any) {
-        //print("url",allPractice[allPractice.count-1].practiceVideoUrl)
-        //let url = URL(fileURLWithPath: Bundle.main.path(forResource: allPractice[allPractice.count-1].practiceVideoUrl, ofType: "mp4")!)
+        //print("url",viewModel.items[viewModel.items.count-1].practiceVideoUrl)
+        //let url = URL(fileURLWithPath: Bundle.main.path(forResource: viewModel.items[viewModel.items.count-1].practiceVideoUrl, ofType: "mp4")!)
         
-        let newUrl = URL(fileURLWithPath: allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceVideoUrl ?? "")
+        let newUrl = URL(fileURLWithPath: viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].practiceVideoUrl)
         
         print(newUrl)
         
@@ -301,21 +300,21 @@ extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.row == 0{
             cell.speakComponentLabel.text = "Speaking Pace"
-            cell.speakScoreComponentLabel.text = String("\(allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceWPM) WPM")
+            cell.speakScoreComponentLabel.text = String("\(viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].practiceWPM) WPM")
             cell.speakAvatarImage.image = UIImage(named: "wpmImg")
             
         } else if indexPath.row == 1{
             cell.speakComponentLabel.text = "Articulation Score"
-            cell.speakScoreComponentLabel.text = String("\(Int(allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceArticulation)) %")
+            cell.speakScoreComponentLabel.text = String("\(Int(viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].practiceArticulation)) %")
             cell.speakAvatarImage.image = UIImage(named: "fillerImg")
             
         }else if indexPath.row == 2{
             cell.speakComponentLabel.text = "Smooth Rate"
-            cell.speakScoreComponentLabel.text = String("\(Int(allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceSmoothRate)) %")
+            cell.speakScoreComponentLabel.text = String("\(Int(viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].practiceSmoothRate)) %")
             cell.speakAvatarImage.image = UIImage(named: "micImg")
             
         }else if indexPath.row == 3{
-            let totalFillerWordUsed = allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceFwHa + allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceFwHm + allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceFwEh
+            let totalFillerWordUsed = viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].practiceFwHa + viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].practiceFwHm + viewModel.items[(selectedHistory.isEmpty ? viewModel.items.count-1 : selectedHistory[0])].practiceFwEh
             
             cell.speakComponentLabel.text = "Filler words used"
             cell.speakScoreComponentLabel.text = String("\(totalFillerWordUsed) \(totalFillerWordUsed == 1 ? "word":"words")")

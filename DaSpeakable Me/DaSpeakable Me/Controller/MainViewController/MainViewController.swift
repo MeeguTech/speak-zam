@@ -16,9 +16,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var practiceTableView: UITableView!
     @IBOutlet weak var emptyDataImageView: UIImageView!
     
-    //let viewModel: PracticeViewModel = PracticeViewModel()
-    var allPractice = PracticeService().getAllPractice()
-    
+    let viewModel: PracticeViewModel = PracticeViewModel()
     var isPinned:[Int]?
     
     override func viewDidLoad() {
@@ -32,7 +30,7 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         DispatchQueue.main.async {
-            self.allPractice = PracticeService().getAllPractice()
+            self.viewModel.getItems()
             self.practiceTableView.reloadData()
             //self.configView()
         }
@@ -50,7 +48,7 @@ class MainViewController: UIViewController {
     
     func configView(){
         
-        if allPractice.isEmpty{
+        if viewModel.items.isEmpty{
             practiceTableView.isHidden = true
             //practiceLabel.isHidden = true
             emptyDataImageView.isHidden = false
@@ -78,11 +76,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if allPractice.count == 0{
+        if viewModel.items.count == 0{
             configView()
         }
         
-        return allPractice.count
+        
+        
+        return viewModel.items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,8 +92,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         
         cell.containerView.cornerRadius(usingCorners: [.topLeft,.topRight,.bottomLeft,.bottomRight], cornerRadii: CGSize(width: 10, height: 10))
         
-        cell.practiceTitleLabel.text = allPractice[indexPath.row].practiceTitle
-        cell.practiceDate.text = allPractice[indexPath.row].practiceCurrentDate
+        cell.practiceTitleLabel.text = viewModel.items[indexPath.row].practiceTitle
+        cell.practiceDate.text = viewModel.items[indexPath.row].currentDate
         cell.pinnedImage.image = UIImage(named: "pinned")
         
         cell.pinnedImage.isHidden = true
@@ -123,9 +123,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
             -> UISwipeActionsConfiguration? {
             let deleteAction = UIContextualAction(style: .destructive, title: nil) { (_, _, completionHandler) in
-                
-                PracticeService().deletePractice(practice: self.allPractice.remove(at: indexPath.row))
-                
+                self.viewModel.items.remove(at: indexPath.row)
                 self.practiceTableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.right)
                 self.practiceTableView.reloadData()
                 completionHandler(true)
@@ -140,8 +138,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let pinAction = UIContextualAction(style: .normal, title: nil) { (_, _, completionHandler) in
-            self.allPractice.move(from: indexPath.row, to: 0)
-            // masi belum ke save posisinya di core data
+            self.viewModel.items.move(from: indexPath.row, to: 0)
+            
             self.isPinned?.append(indexPath.row)
             self.practiceTableView.reloadData()
             completionHandler(true)

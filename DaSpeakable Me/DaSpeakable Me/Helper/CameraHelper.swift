@@ -11,8 +11,7 @@ import UIKit
 
 class CameraHelper: NSObject {
     
-    //let viewModel: PracticeViewModel = PracticeViewModel()
-    var allPractice = PracticeService().getAllPractice()
+    let viewModel: PracticeViewModel = PracticeViewModel()
     
     enum CameraControllerError: Swift.Error {
         case captureSessionAlreadyRunning
@@ -254,7 +253,7 @@ extension CameraHelper {
         }
         
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let fileUrl = paths[0].appendingPathComponent("output\(allPractice.count+1).mp4")
+        let fileUrl = paths[0].appendingPathComponent("output\(viewModel.items.count+1).mp4")
         
         videoFinalUrl = fileUrl
         
