@@ -19,7 +19,7 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
     private let audioEngine = AVAudioEngine()
     
     
-    //MARK: our variable
+    //MARK: our 
     
     var estimatedTime:Int = 0
     var minutes:Int = 1
