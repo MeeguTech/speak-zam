@@ -28,7 +28,7 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
     var finalWord:Int = 0
     
     private var soundClassifier = try! FillerWordClassifier()
-    let queue = DispatchQueue(label: "gilapo.DaSpeakable-Me")
+    let queue = DispatchQueue(label: "YOUR_BUNDLE_NAME")
     var streamAnalyzer: SNAudioStreamAnalyzer!
     var fillerWords = [(label: String, confidence: Float)]()
     
@@ -55,8 +55,7 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
     var cameraConfig: CameraHelper!
     let imagePickerController = UIImagePickerController()
     
-    //let viewModel: PracticeViewModel = PracticeViewModel()
-    var allPractice = PracticeService().getAllPractice()
+    let viewModel: PracticeViewModel = PracticeViewModel()
     
     var videoRecordingStarted: Bool = false
     {
@@ -414,9 +413,7 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 
                 // append new practice
-                //self.viewModel.addPractice(practiceTitle: "Practice \(self.viewModel.items.count+1)", practiceWPM: self.wordsPerMinutes, practiceArticulation: self.clearRate, practiceSmoothRate: self.smoothRate, practiceVideoUrl:self.cameraConfig.getVideoUrl(), practiceFwEh: self.counterFwEh, practiceFwHa: self.counterFwHa, practiceFwHm: self.counterFwHm, currentDate: TimerHelper().getCurrentDate())
-                
-                PracticeService().savePractice(practiceTitle: "Practice \(self.allPractice.count+1)", practiceWPM: self.wordsPerMinutes, practiceArticulation: self.clearRate, practiceSmoothRate: self.smoothRate, practiceVideoUrl:self.cameraConfig.getVideoUrl(), practiceFwEh: Int64(self.counterFwEh), practiceFwHa: Int64(self.counterFwHa), practiceFwHm: Int64(self.counterFwHm), practiceCurrentDate: TimerHelper().getCurrentDate(), practiceOverallScore: 0)
+                self.viewModel.addPractice(practiceTitle: "Practice \(self.viewModel.items.count+1)", practiceWPM: self.wordsPerMinutes, practiceArticulation: self.clearRate, practiceSmoothRate: self.smoothRate, practiceVideoUrl:self.cameraConfig.getVideoUrl(), practiceFwEh: self.counterFwEh, practiceFwHa: self.counterFwHa, practiceFwHm: self.counterFwHm, currentDate: TimerHelper().getCurrentDate())
                 
                 let resultVc = UIStoryboard(name: "ResultStoryboard", bundle: nil).instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
                 
