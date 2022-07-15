@@ -20,6 +20,14 @@
 		63A2E20B286F352E00C67464 /* ResultStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63A2E20A286F352E00C67464 /* ResultStoryboard.storyboard */; };
 		63A2E217286F37A700C67464 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2E215286F37A700C67464 /* ResultTableViewCell.swift */; };
 		63A2E218286F37A700C67464 /* ResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63A2E216286F37A700C67464 /* ResultTableViewCell.xib */; };
+		AC4090F728818B2800254937 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC4090F628818B2800254937 /* Assets.xcassets */; };
+		AC4090FD28818B2800254937 /* DaSpeakable Watch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AC4090FC28818B2800254937 /* DaSpeakable Watch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AC40910228818B2800254937 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40910128818B2800254937 /* ContentView.swift */; };
+		AC40910428818B2800254937 /* DaSpeakable_MeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40910328818B2800254937 /* DaSpeakable_MeApp.swift */; };
+		AC40910628818B2800254937 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40910528818B2800254937 /* ComplicationController.swift */; };
+		AC40910828818B2900254937 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC40910728818B2900254937 /* Assets.xcassets */; };
+		AC40910B28818B2900254937 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC40910A28818B2900254937 /* Preview Assets.xcassets */; };
+		AC40910F28818B2900254937 /* DaSpeakable Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AC4090F428818B2700254937 /* DaSpeakable Watch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AC4C43CE286609E200CAEFB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4C43CD286609E200CAEFB7 /* AppDelegate.swift */; };
 		AC4C43D0286609E200CAEFB7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4C43CF286609E200CAEFB7 /* SceneDelegate.swift */; };
 		AC4C43D5286609E200CAEFB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC4C43D3286609E200CAEFB7 /* Main.storyboard */; };
@@ -41,6 +49,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		AC4090FE28818B2800254937 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC4C43C2286609E200CAEFB7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC4090FB28818B2800254937;
+			remoteInfo = "DaSpeakable Watch WatchKit Extension";
+		};
+		AC40910D28818B2900254937 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC4C43C2286609E200CAEFB7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC4090F328818B2700254937;
+			remoteInfo = "DaSpeakable Watch";
+		};
 		AC4C43E4286609E300CAEFB7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AC4C43C2286609E200CAEFB7 /* Project object */;
@@ -57,6 +79,31 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		AC4090F128818A3400254937 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				AC40910F28818B2900254937 /* DaSpeakable Watch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC40911328818B2900254937 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AC4090FD28818B2800254937 /* DaSpeakable Watch WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		634FB52028702FCF009F00C1 /* IndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorViewController.swift; sourceTree = "<group>"; };
 		634FB52228702FE3009F00C1 /* IndicatorStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IndicatorStoryboard.storyboard; sourceTree = "<group>"; };
@@ -71,6 +118,15 @@
 		63A2E20A286F352E00C67464 /* ResultStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResultStoryboard.storyboard; sourceTree = "<group>"; };
 		63A2E215286F37A700C67464 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		63A2E216286F37A700C67464 /* ResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultTableViewCell.xib; sourceTree = "<group>"; };
+		AC4090F428818B2700254937 /* DaSpeakable Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DaSpeakable Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC4090F628818B2800254937 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AC4090FC28818B2800254937 /* DaSpeakable Watch WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DaSpeakable Watch WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC40910128818B2800254937 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AC40910328818B2800254937 /* DaSpeakable_MeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaSpeakable_MeApp.swift; sourceTree = "<group>"; };
+		AC40910528818B2800254937 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		AC40910728818B2900254937 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AC40910A28818B2900254937 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AC40910C28818B2900254937 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC4C43CA286609E200CAEFB7 /* DaSpeakable Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DaSpeakable Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC4C43CD286609E200CAEFB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC4C43CF286609E200CAEFB7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +152,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AC4090F928818B2800254937 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AC4C43C7286609E200CAEFB7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -188,12 +251,43 @@
 			path = ResultTableViewCell;
 			sourceTree = "<group>";
 		};
+		AC4090F528818B2700254937 /* DaSpeakable Watch */ = {
+			isa = PBXGroup;
+			children = (
+				AC4090F628818B2800254937 /* Assets.xcassets */,
+			);
+			path = "DaSpeakable Watch";
+			sourceTree = "<group>";
+		};
+		AC40910028818B2800254937 /* DaSpeakable Watch WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AC40910128818B2800254937 /* ContentView.swift */,
+				AC40910328818B2800254937 /* DaSpeakable_MeApp.swift */,
+				AC40910528818B2800254937 /* ComplicationController.swift */,
+				AC40910728818B2900254937 /* Assets.xcassets */,
+				AC40910C28818B2900254937 /* Info.plist */,
+				AC40910928818B2900254937 /* Preview Content */,
+			);
+			path = "DaSpeakable Watch WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		AC40910928818B2900254937 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				AC40910A28818B2900254937 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		AC4C43C1286609E200CAEFB7 = {
 			isa = PBXGroup;
 			children = (
 				AC4C43CC286609E200CAEFB7 /* DaSpeakable Me */,
 				AC4C43E6286609E300CAEFB7 /* DaSpeakable MeTests */,
 				AC4C43F0286609E300CAEFB7 /* DaSpeakable MeUITests */,
+				AC4090F528818B2700254937 /* DaSpeakable Watch */,
+				AC40910028818B2800254937 /* DaSpeakable Watch WatchKit Extension */,
 				AC4C43CB286609E200CAEFB7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -204,6 +298,8 @@
 				AC4C43CA286609E200CAEFB7 /* DaSpeakable Me.app */,
 				AC4C43E3286609E300CAEFB7 /* DaSpeakable MeTests.xctest */,
 				AC4C43ED286609E300CAEFB7 /* DaSpeakable MeUITests.xctest */,
+				AC4090F428818B2700254937 /* DaSpeakable Watch.app */,
+				AC4090FC28818B2800254937 /* DaSpeakable Watch WatchKit Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -340,6 +436,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AC4090F328818B2700254937 /* DaSpeakable Watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC40911428818B2900254937 /* Build configuration list for PBXNativeTarget "DaSpeakable Watch" */;
+			buildPhases = (
+				AC4090F228818B2700254937 /* Resources */,
+				AC40911328818B2900254937 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC4090FF28818B2800254937 /* PBXTargetDependency */,
+			);
+			name = "DaSpeakable Watch";
+			productName = "DaSpeakable Watch";
+			productReference = AC4090F428818B2700254937 /* DaSpeakable Watch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		AC4090FB28818B2800254937 /* DaSpeakable Watch WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC40911028818B2900254937 /* Build configuration list for PBXNativeTarget "DaSpeakable Watch WatchKit Extension" */;
+			buildPhases = (
+				AC4090F828818B2800254937 /* Sources */,
+				AC4090F928818B2800254937 /* Frameworks */,
+				AC4090FA28818B2800254937 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DaSpeakable Watch WatchKit Extension";
+			productName = "DaSpeakable Watch WatchKit Extension";
+			productReference = AC4090FC28818B2800254937 /* DaSpeakable Watch WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		AC4C43C9286609E200CAEFB7 /* DaSpeakable Me */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AC4C43F7286609E300CAEFB7 /* Build configuration list for PBXNativeTarget "DaSpeakable Me" */;
@@ -347,10 +477,12 @@
 				AC4C43C6286609E200CAEFB7 /* Sources */,
 				AC4C43C7286609E200CAEFB7 /* Frameworks */,
 				AC4C43C8286609E200CAEFB7 /* Resources */,
+				AC4090F128818A3400254937 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				AC40910E28818B2900254937 /* PBXTargetDependency */,
 			);
 			name = "DaSpeakable Me";
 			productName = "DaSpeakable Me";
@@ -403,6 +535,12 @@
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
+					AC4090F328818B2700254937 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					AC4090FB28818B2800254937 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
 					AC4C43C9286609E200CAEFB7 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -432,11 +570,30 @@
 				AC4C43C9286609E200CAEFB7 /* DaSpeakable Me */,
 				AC4C43E2286609E300CAEFB7 /* DaSpeakable MeTests */,
 				AC4C43EC286609E300CAEFB7 /* DaSpeakable MeUITests */,
+				AC4090F328818B2700254937 /* DaSpeakable Watch */,
+				AC4090FB28818B2800254937 /* DaSpeakable Watch WatchKit Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AC4090F228818B2700254937 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC4090F728818B2800254937 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC4090FA28818B2800254937 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC40910B28818B2900254937 /* Preview Assets.xcassets in Resources */,
+				AC40910828818B2900254937 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AC4C43C8286609E200CAEFB7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -468,6 +625,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AC4090F828818B2800254937 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC40910228818B2800254937 /* ContentView.swift in Sources */,
+				AC40910428818B2800254937 /* DaSpeakable_MeApp.swift in Sources */,
+				AC40910628818B2800254937 /* ComplicationController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AC4C43C6286609E200CAEFB7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -516,6 +683,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		AC4090FF28818B2800254937 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC4090FB28818B2800254937 /* DaSpeakable Watch WatchKit Extension */;
+			targetProxy = AC4090FE28818B2800254937 /* PBXContainerItemProxy */;
+		};
+		AC40910E28818B2900254937 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC4090F328818B2700254937 /* DaSpeakable Watch */;
+			targetProxy = AC40910D28818B2900254937 /* PBXContainerItemProxy */;
+		};
 		AC4C43E5286609E300CAEFB7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = AC4C43C9286609E200CAEFB7 /* DaSpeakable Me */;
@@ -548,6 +725,121 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AC40911128818B2900254937 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DaSpeakable Watch WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = R495F663N6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "DaSpeakable Watch WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "DaSpeakable Watch WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "gilapo.DaSpeakable-Me.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		AC40911228818B2900254937 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DaSpeakable Watch WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = R495F663N6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "DaSpeakable Watch WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "DaSpeakable Watch WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "gilapo.DaSpeakable-Me.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
+		AC40911528818B2900254937 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R495F663N6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = DaSpeakable_Watch_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = "DaSpeakable Watch";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "gilapo.DaSpeakable-Me";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "gilapo.DaSpeakable-Me.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		AC40911628818B2900254937 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R495F663N6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = DaSpeakable_Watch_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = "DaSpeakable Watch";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "gilapo.DaSpeakable-Me";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "gilapo.DaSpeakable-Me.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
 		AC4C43F5286609E300CAEFB7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -669,7 +961,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z89G6VHQ8A;
+				DEVELOPMENT_TEAM = R495F663N6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DaSpeakable Me/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = SpeakZam;
@@ -703,9 +995,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = R495F663N6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DaSpeakable Me/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = SpeakZam;
@@ -814,6 +1107,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AC40911028818B2900254937 /* Build configuration list for PBXNativeTarget "DaSpeakable Watch WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC40911128818B2900254937 /* Debug */,
+				AC40911228818B2900254937 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC40911428818B2900254937 /* Build configuration list for PBXNativeTarget "DaSpeakable Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC40911528818B2900254937 /* Debug */,
+				AC40911628818B2900254937 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AC4C43C5286609E200CAEFB7 /* Build configuration list for PBXProject "DaSpeakable Me" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
