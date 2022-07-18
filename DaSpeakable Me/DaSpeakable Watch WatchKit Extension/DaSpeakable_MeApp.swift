@@ -12,7 +12,8 @@ struct DaSpeakable_MeApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ContentView()
+                StartPracticeView(isStartPractice: .constant(false))
+                //StartPracticeView()
             }
         }
     }

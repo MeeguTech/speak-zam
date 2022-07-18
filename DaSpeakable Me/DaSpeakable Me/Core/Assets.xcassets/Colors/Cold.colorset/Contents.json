@@ -2,12 +2,12 @@
   "colors" : [
     {
       "color" : {
-        "color-space" : "display-p3",
+        "color-space" : "srgb",
         "components" : {
           "alpha" : "1.000",
-          "blue" : "0x9B",
-          "green" : "0x2F",
-          "red" : "0x24"
+          "blue" : "0xEB",
+          "green" : "0xA3",
+          "red" : "0x9B"
         }
       },
       "idiom" : "universal"
@@ -23,12 +23,24 @@
         "color-space" : "srgb",
         "components" : {
           "alpha" : "1.000",
-          "blue" : "0x9B",
-          "green" : "0x2F",
-          "red" : "0x24"
+          "blue" : "0xEB",
+          "green" : "0xA3",
+          "red" : "0x9B"
         }
       },
       "idiom" : "universal"
+    },
+    {
+      "color" : {
+        "color-space" : "srgb",
+        "components" : {
+          "alpha" : "1.000",
+          "blue" : "0.922",
+          "green" : "0.639",
+          "red" : "0.608"
+        }
+      },
+      "idiom" : "watch"
     }
   ],
   "info" : {
