@@ -21,16 +21,22 @@ class MainViewController: UIViewController {
     
     var isPinned:[Int]?
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         setUpTablePractice()
         configView()
         
+        //print("iOS: ", watchConn.isStartPractice)
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        
+        
         DispatchQueue.main.async {
             self.allPractice = PracticeService().getAllPractice()
             self.practiceTableView.reloadData()

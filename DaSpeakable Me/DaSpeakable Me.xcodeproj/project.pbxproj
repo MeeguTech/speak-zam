@@ -47,14 +47,13 @@
 		AC8DF26F286C38A6001ADFF3 /* SpeechArticulationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DF26E286C38A6001ADFF3 /* SpeechArticulationHelper.swift */; };
 		ACAD10D928855EC200CD7B65 /* OpeningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAD10D828855EC200CD7B65 /* OpeningView.swift */; };
 		ACAD10DB28855F5800CD7B65 /* StartPracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAD10DA28855F5800CD7B65 /* StartPracticeView.swift */; };
-		ACAD10E0288563AA00CD7B65 /* PracticeTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAD10DF288563A900CD7B65 /* PracticeTimerView.swift */; };
-		ACAD10E2288563C400CD7B65 /* PracticeControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAD10E1288563C400CD7B65 /* PracticeControlView.swift */; };
 		ACAD10E4288563E700CD7B65 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAD10E3288563E700CD7B65 /* PracticeView.swift */; };
 		ACAD10E72885641A00CD7B65 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAD10E62885641A00CD7B65 /* ResultView.swift */; };
 		ACAD10E82885649500CD7B65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC4C43D9286609E300CAEFB7 /* Assets.xcassets */; };
 		ACAD10EA28856A9C00CD7B65 /* WatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAD10E928856A9C00CD7B65 /* WatchModel.swift */; };
-		ACAD10ED28856FDD00CD7B65 /* WatchConnectivityServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAD10EC28856FDD00CD7B65 /* WatchConnectivityServices.swift */; };
+		ACAD10ED28856FDD00CD7B65 /* WatchConnectivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAD10EC28856FDD00CD7B65 /* WatchConnectivityService.swift */; };
 		ACAFEA372869C0B500EE148D /* SpeakHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFEA362869C0B500EE148D /* SpeakHelper.swift */; };
+		ACC0D9922885A9250023B9E5 /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC0D9912885A9250023B9E5 /* RecordingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,13 +158,12 @@
 		AC8DF26E286C38A6001ADFF3 /* SpeechArticulationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechArticulationHelper.swift; sourceTree = "<group>"; };
 		ACAD10D828855EC200CD7B65 /* OpeningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningView.swift; sourceTree = "<group>"; };
 		ACAD10DA28855F5800CD7B65 /* StartPracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPracticeView.swift; sourceTree = "<group>"; };
-		ACAD10DF288563A900CD7B65 /* PracticeTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeTimerView.swift; sourceTree = "<group>"; };
-		ACAD10E1288563C400CD7B65 /* PracticeControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeControlView.swift; sourceTree = "<group>"; };
 		ACAD10E3288563E700CD7B65 /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
 		ACAD10E62885641A00CD7B65 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		ACAD10E928856A9C00CD7B65 /* WatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchModel.swift; sourceTree = "<group>"; };
-		ACAD10EC28856FDD00CD7B65 /* WatchConnectivityServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityServices.swift; sourceTree = "<group>"; };
+		ACAD10EC28856FDD00CD7B65 /* WatchConnectivityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityService.swift; sourceTree = "<group>"; };
 		ACAFEA362869C0B500EE148D /* SpeakHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakHelper.swift; sourceTree = "<group>"; };
+		ACC0D9912885A9250023B9E5 /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,7 +229,7 @@
 			children = (
 				6390BCFC287D53DB0079302B /* ContextService.swift */,
 				6390BCFE287D54970079302B /* PracticeService.swift */,
-				ACAD10EC28856FDD00CD7B65 /* WatchConnectivityServices.swift */,
+				ACAD10EC28856FDD00CD7B65 /* WatchConnectivityService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -302,6 +300,7 @@
 		AC4C43C1286609E200CAEFB7 = {
 			isa = PBXGroup;
 			children = (
+				ACC0D9902885A8EB0023B9E5 /* Shared */,
 				AC4C43CC286609E200CAEFB7 /* DaSpeakable Me */,
 				AC4C43E6286609E300CAEFB7 /* DaSpeakable MeTests */,
 				AC4C43F0286609E300CAEFB7 /* DaSpeakable MeUITests */,
@@ -421,19 +420,9 @@
 				ACAD10D828855EC200CD7B65 /* OpeningView.swift */,
 				ACAD10DA28855F5800CD7B65 /* StartPracticeView.swift */,
 				ACAD10E3288563E700CD7B65 /* PracticeView.swift */,
-				ACAD10E5288563EE00CD7B65 /* PracticeViews */,
 				ACAD10E62885641A00CD7B65 /* ResultView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		ACAD10E5288563EE00CD7B65 /* PracticeViews */ = {
-			isa = PBXGroup;
-			children = (
-				ACAD10DF288563A900CD7B65 /* PracticeTimerView.swift */,
-				ACAD10E1288563C400CD7B65 /* PracticeControlView.swift */,
-			);
-			path = PracticeViews;
 			sourceTree = "<group>";
 		};
 		ACAFEA352869BE9000EE148D /* Helper */ = {
@@ -445,6 +434,14 @@
 				AC8DF26E286C38A6001ADFF3 /* SpeechArticulationHelper.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		ACC0D9902885A8EB0023B9E5 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				ACC0D9912885A9250023B9E5 /* RecordingView.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		ACF072A32873CE8D00FB8E10 /* Storyboards */ = {
@@ -684,11 +681,9 @@
 				ACAD10E72885641A00CD7B65 /* ResultView.swift in Sources */,
 				ACAD10DB28855F5800CD7B65 /* StartPracticeView.swift in Sources */,
 				ACAD10E4288563E700CD7B65 /* PracticeView.swift in Sources */,
-				ACAD10E0288563AA00CD7B65 /* PracticeTimerView.swift in Sources */,
 				ACAD10D928855EC200CD7B65 /* OpeningView.swift in Sources */,
 				ACAD10EA28856A9C00CD7B65 /* WatchModel.swift in Sources */,
 				AC40910628818B2800254937 /* ComplicationController.swift in Sources */,
-				ACAD10E2288563C400CD7B65 /* PracticeControlView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -710,13 +705,14 @@
 				6390BCFD287D53DB0079302B /* ContextService.swift in Sources */,
 				AC4C43CE286609E200CAEFB7 /* AppDelegate.swift in Sources */,
 				6390BCF6287C46020079302B /* PracticeDataModel.xcdatamodeld in Sources */,
-				ACAD10ED28856FDD00CD7B65 /* WatchConnectivityServices.swift in Sources */,
+				ACAD10ED28856FDD00CD7B65 /* WatchConnectivityService.swift in Sources */,
 				AC8DF260286C09BB001ADFF3 /* RecordingViewController.swift in Sources */,
 				6390BCFA287C6D370079302B /* Practice+CoreDataProperties.swift in Sources */,
 				AC4C44072866136800CAEFB7 /* FillerWordClassifier.mlmodel in Sources */,
 				63A2E205286EF02400C67464 /* PracticeTableViewCell.swift in Sources */,
 				6390BCF9287C6D370079302B /* Practice+CoreDataClass.swift in Sources */,
 				63A2E217286F37A700C67464 /* ResultTableViewCell.swift in Sources */,
+				ACC0D9922885A9250023B9E5 /* RecordingView.swift in Sources */,
 				AC4C43D0286609E200CAEFB7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -795,14 +791,14 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DaSpeakable Watch WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "DaSpeakable Watch WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = DaSpeakable_Watch_WatchKit_Extension.ComplicationController;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "gilapo.DaSpeakable-Me.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -826,14 +822,14 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DaSpeakable Watch WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "DaSpeakable Watch WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = DaSpeakable_Watch_WatchKit_Extension.ComplicationController;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "gilapo.DaSpeakable-Me.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -859,7 +855,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "DaSpeakable Watch";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "gilapo.DaSpeakable-Me";
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "gilapo.DaSpeakable-Me.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -886,7 +882,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "DaSpeakable Watch";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "gilapo.DaSpeakable-Me";
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "gilapo.DaSpeakable-Me.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;

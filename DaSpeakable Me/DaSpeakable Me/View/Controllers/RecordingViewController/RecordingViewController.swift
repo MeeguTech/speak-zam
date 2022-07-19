@@ -9,8 +9,17 @@ import UIKit
 import Photos
 import Speech
 import SoundAnalysis
+import SwiftUI
+
+//
+//enum View: String {
+//    case recordingView = "recordingView"
+//    case mainView = "mainView"
+//    case resultView = "resultView"
+//}
 
 class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
+ 
     
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
@@ -19,13 +28,15 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
     private let audioEngine = AVAudioEngine()
     
     
-    //MARK: our 
+    //MARK: our variable
     
     var estimatedTime:Int = 0
     var minutes:Int = 1
     var timer:Timer = Timer()
     var isTimerRun:Bool = false
     var finalWord:Int = 0
+    
+    
     
     private var soundClassifier = try! FillerWordClassifier()
     let queue = DispatchQueue(label: "gilapo.DaSpeakable-Me")
@@ -44,6 +55,12 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
     var counterFwEh: Int = 0
     var counterFwHm: Int = 0
     var counterFwHa: Int = 0
+    
+    //MARK: watch conn
+    var watchConn = WatchConnectivityService()
+    var isOpenPractice:Bool = false
+    
+    //let watchConService = UIHostingController(rootView: WatchConnectivityService())
     
     @IBOutlet weak var practiceButton: UIButton!
     @IBOutlet weak var previewImageView: UIImageView!
@@ -125,6 +142,10 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        watchConn.delegate = self
+        
+        isOpenPractice = true
+        sendMessage(isOnPracticeScreen:isOpenPractice)
         practiceButton.isUserInteractionEnabled = false
         practiceButton.tintColor = UIColor(named: "Winter")
         
@@ -141,6 +162,7 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
             self.practiceButton.isUserInteractionEnabled = true
             self.toggleCameraButton.setImage(UIImage(named: "flip"), for: .normal)
         }
+        print(isOpenPractice)
         
     }
     
@@ -149,7 +171,13 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        
+        //print(isOpenPractice)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
+        
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
@@ -189,6 +217,15 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
         
     }
+    
+    func sendMessage(isOnPracticeScreen:Bool) {
+        //print(message)
+        // MARK: Send message menggunakan WCSession
+        
+        let dataMessage = ["isOnPracticeScreen":isOnPracticeScreen]
+        watchConn.wcSession.sendMessage(dataMessage, replyHandler: nil)
+    }
+    
     // MARK: Filler Classifier
     func createClassificationRequest() {
         
@@ -329,15 +366,6 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
                 showToast(message: "slow down Eminem😭", fontSize: 15)
             }
         }
-        
-//        if estimatedTime == speakTime && totalWord ?? 0 < 25{
-//            showToast(message: "Faster Champp!!🚀", fontSize: 30)
-//            print("to slow")
-//        }
-//        else if (estimatedTime == speakTime && totalWord ?? 0 > 35){
-//            showToast(message: "wow slow down Eminem😭", fontSize: 30)
-//            print("to fast")
-//        }
     }
     
     
@@ -398,8 +426,22 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
     // MARK: Start Practice
     @IBAction func didTapOnTakePhotoButton(_ sender: Any) {
         
+        startPractice()
         
-        
+    }
+    
+    func startPracticeFromWatch(startButtonDidTapped:Bool){
+        //print("in IOs from watch", startButtonDidTapped)
+        if startButtonDidTapped{
+            print("in")
+            startPractice()
+        }else if !startButtonDidTapped{
+            startPractice()
+            print("out")
+        }
+    }
+    
+    func startPractice(){
         if self.audioEngine.isRunning {
             self.audioEngine.stop()
             
@@ -458,7 +500,6 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
                 UISaveVideoAtPathToSavedPhotosAlbum(url.path, self, #selector(self.video(_:didFinishSavingWithError:contextInfo:)), nil)
             }
         }
-        
     }
     
     
@@ -477,6 +518,8 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
     // MARK: back to main screen
     @IBAction func didTapCancel (){
         
+        isOpenPractice = false
+        print(isOpenPractice)
         if videoRecordingStarted{
             let alert = UIAlertController(title: "Progress Not Going To Save", message: "Are you sure you want to go back? your progress is NOT going to save", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
@@ -546,28 +589,9 @@ extension RecordingViewController: SNResultsObserving {
     }
 }
 
-//Disabling Xcode’s OS-Level Debug Logging
-//1- From Xcode menu open: Product > Scheme > Edit Scheme
-//2- On your Environment Variables set OS_ACTIVITY_MODE in the value set disable
-// this will stop the warning but not the error
-
-extension RecordingViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if info[UIImagePickerController.InfoKey.originalImage] is UIImage {
-            //            self.galleryButton.contentMode = .scaleAspectFit
-            //            self.galleryButton.setImage( pickedImage, for: .normal)
-        }
-        if let videoURL = info[UIImagePickerController.InfoKey.mediaURL] as? URL {
-            print("videoURL:\(String(describing: videoURL))")
-            self.videoSaveAt = String(describing: videoURL)
-        }
-        
-        self.dismiss(animated: true, completion: nil)
+extension RecordingViewController: WatchConnectivityServiceDelegate{
+    func startPractice(isStart: Bool) {
+        startPracticeFromWatch(startButtonDidTapped:isStart)
     }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
-    
 }
 

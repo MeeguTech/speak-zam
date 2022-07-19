@@ -11,16 +11,35 @@ struct OpeningView: View {
     
     //TODO: caritau bagaimana cara mengetahui jikalau app yg di iOS sudah di practice screen
     
+    @ObservedObject var model = WatchModel()
+    
+    //@State var isStartPractice:Bool = false
+    //@Binding var isOnPracticeScreen:Bool
+    
+    
     var body: some View {
-        VStack(alignment:.leading) {
-            Text("It’s time to practice your presentation!")
-                .font(.system(size: 20))
-                .padding(.bottom, 5)
-            Text("Open SpeakZam on your phone")
-                .foregroundColor(.gray)
-                .font(.system(size: 16))
+        
+        NavigationView{
+//            if model.isOnPracticeScreen{
+//                NavigationLink(destination: StartPracticeView())
+//            }else{
+//
+            VStack(alignment:.leading) {
+                Text("It’s time to practice your presentation!")
+                    .font(.system(size: 20))
+                    .padding(.bottom, 5)
+                Text("Tap \(Text("Start Practice").bold()) on your SpeakZam iPhone")
+                    .foregroundColor(.gray)
+                    .font(.system(size: 16))
+//            }
+
+            //print(model.isOnPracticeScreen)
+            }
         }
+        
     }
+    
+    
 }
 
 struct OpeningView_Previews: PreviewProvider {

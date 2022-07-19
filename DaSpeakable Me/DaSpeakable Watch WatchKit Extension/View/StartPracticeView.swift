@@ -11,24 +11,35 @@ struct StartPracticeView: View {
     
     //TODO: start practice yang ada di iOS dan berpindah ke practiceView
     
-    @ObservedObject  var model = WatchModel()
+    var model = WatchModel()
     
-    @Binding var isStartPractice:Bool
+    @State var isStartPractice:Bool = false
+    @State var selection: Int? = nil
     
     var body: some View {
-        
-        VStack(alignment:.center) {
-            GeometryReader { geometry in
-                Text("Start Practice")
-                    .font(.system(size: 35))
-                    .multilineTextAlignment(.center)
-                    .frame(width: geometry.size.width, height: geometry.size.height)
-                    .background(Circle().fill(Color(UIColor(named: "PastelBlue")!))
-                    .scaledToFill())
-            }.onTapGesture {
-                print("tapped start practice")
+        NavigationView{
+            VStack() {
+                NavigationLink(destination: PracticeView(isStartPractice: $isStartPractice), tag: 1, selection: $selection)  {
+                    Button(action: {
+                        self.selection = 1
+                        isStartPractice.toggle()
+                        sendMessage(isStart: isStartPractice)
+                    }) {
+                        
+                        Image(systemName: "play.fill")
+                            .font(.system(size: 65))
+                            .frame(width: 120, height: 120, alignment: .center)
+                            .background(LinearGradient(gradient: Gradient(colors: [Color(UIColor(named: "PastelBlue")!), Color(UIColor(named: "Navy")!)]), startPoint: .top, endPoint: .bottom))
+                            .clipShape(Circle())
+                            .font(.system(size: 25))
+                    }
+                }.buttonStyle(PlainButtonStyle())
                 
-                sendMessage(isStart: isStartPractice)
+                
+                Text("Tap to Start!")
+                    .font(.system(size: 17))
+                    .bold()
+                    .padding(.top)
             }
         }
     }
@@ -39,11 +50,10 @@ struct StartPracticeView: View {
         let dataMessage = ["isStartPractice": isStart]
         model.wcSession.sendMessage(dataMessage, replyHandler: nil)
     }
-    
 }
 
 struct StartPracticeView_Previews: PreviewProvider {
     static var previews: some View {
-        StartPracticeView(isStartPractice: .constant(false))
+        StartPracticeView()
     }
 }
