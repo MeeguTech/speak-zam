@@ -226,6 +226,23 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
         watchConn.wcSession.sendMessage(dataMessage, replyHandler: nil)
     }
     
+    func sendPracticeData(dataPracticeTitle: String, dataPracticeWPM: Double, dataPracticeArticulation: Double, dataPracticeSmoothRate: Double, dataPracticeVideoUrl: String, dataPracticeFwEh: Int, dataPracticeFwHa: Int, dataPracticeFwHm: Int, dataPracticeOverallScore: Double) {
+        //print(message)
+        // MARK: Send data practice menggunakan WCSession
+        
+        let dataPractice = ["dataPracticeTitle": dataPracticeTitle,
+                            "dataPracticeWPM": dataPracticeWPM,
+                            "dataPracticeArticulation": dataPracticeArticulation,
+                            "dataPracticeSmoothRate": dataPracticeSmoothRate,
+                            "dataPracticeVideoUrl": dataPracticeVideoUrl,
+                            "dataPracticeFwEh": dataPracticeFwEh,
+                            "dataPracticeFwHa": dataPracticeFwHa,
+                            "dataPracticeFwHm": dataPracticeFwHm,
+                            "dataPracticeOverallScore" : dataPracticeOverallScore] as [String : Any]
+        
+        watchConn.wcSession.sendMessage(dataPractice, replyHandler: nil)
+    }
+    
     // MARK: Filler Classifier
     func createClassificationRequest() {
         
@@ -458,7 +475,28 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
                 // append new practice
                 //self.viewModel.addPractice(practiceTitle: "Practice \(self.viewModel.items.count+1)", practiceWPM: self.wordsPerMinutes, practiceArticulation: self.clearRate, practiceSmoothRate: self.smoothRate, practiceVideoUrl:self.cameraConfig.getVideoUrl(), practiceFwEh: self.counterFwEh, practiceFwHa: self.counterFwHa, practiceFwHm: self.counterFwHm, currentDate: TimerHelper().getCurrentDate())
                 
-                PracticeService().savePractice(practiceTitle: "Practice \(self.allPractice.count+1)", practiceWPM: self.wordsPerMinutes, practiceArticulation: self.clearRate, practiceSmoothRate: self.smoothRate, practiceVideoUrl:self.cameraConfig.getVideoUrl(), practiceFwEh: Int64(self.counterFwEh), practiceFwHa: Int64(self.counterFwHa), practiceFwHm: Int64(self.counterFwHm), practiceCurrentDate: TimerHelper().getCurrentDate(), practiceOverallScore: 0)
+                PracticeService().savePractice(
+                    practiceTitle: "Practice \(self.allPractice.count+1)",
+                    practiceWPM: self.wordsPerMinutes,
+                    practiceArticulation: self.clearRate,
+                    practiceSmoothRate: self.smoothRate,
+                    practiceVideoUrl: self.cameraConfig.getVideoUrl(),
+                    practiceFwEh: Int64(self.counterFwEh),
+                    practiceFwHa: Int64(self.counterFwHa),
+                    practiceFwHm: Int64(self.counterFwHm),
+                    practiceCurrentDate: TimerHelper().getCurrentDate(),
+                    practiceOverallScore: (self.wordsPerMinutes + self.clearRate + self.smoothRate)/3)
+                
+                
+                self.sendPracticeData(dataPracticeTitle: "Practice \(self.allPractice.count+1)",
+                                      dataPracticeWPM: self.wordsPerMinutes,
+                                      dataPracticeArticulation: self.clearRate,
+                                      dataPracticeSmoothRate: self.smoothRate,
+                                      dataPracticeVideoUrl: self.cameraConfig.getVideoUrl(),
+                                      dataPracticeFwEh: self.counterFwEh,
+                                      dataPracticeFwHa: self.counterFwHa,
+                                      dataPracticeFwHm: self.counterFwHm,
+                                      dataPracticeOverallScore: (self.wordsPerMinutes + self.clearRate + self.smoothRate)/3)
                 
                 let resultVc = UIStoryboard(name: "ResultStoryboard", bundle: nil).instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
                 

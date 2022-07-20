@@ -30,7 +30,6 @@ struct PracticeDetail{
 
 class ResultViewController: UIViewController {
     
-    
     @IBOutlet weak var resultTableView: UITableView!
     @IBOutlet weak var resultHeader:UIView!
     @IBOutlet weak var resultLabelTitle: UILabel!
@@ -58,12 +57,17 @@ class ResultViewController: UIViewController {
     var selectedPracticeDetail: PracticeDetail!
     
     var scrollWidth: CGFloat! = 0.0
-        var scrollHeight: CGFloat! = 0.0
+    var scrollHeight: CGFloat! = 0.0
+    
+    //MARK: watch conn
+    var watchConn = WatchConnectivityService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupResultTableView()
+        
+        watchConn.delegateRetake = self
         
         //assignCell()
         
@@ -284,6 +288,12 @@ class ResultViewController: UIViewController {
         
     }
     
+    func dismissResultScreen(retakeButtonDidTapped: Bool){
+        if retakeButtonDidTapped{
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
 }
 
 extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
@@ -350,7 +360,6 @@ extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-
 extension UIView {
     func setCornerRadius(radius: CGFloat) {
         self.layer.cornerRadius = radius
@@ -360,5 +369,11 @@ extension UIView {
         clipsToBounds = true
         layer.cornerRadius = cornerRadius
         layer.maskedCorners = CACornerMask(arrayLiteral: maskedCorners)
+    }
+}
+
+extension ResultViewController: WatchConnectivityServiceRetakePracticeDelegate{
+    func retakePractice(isRetake: Bool) {
+        dismissResultScreen(retakeButtonDidTapped: isRetake)
     }
 }

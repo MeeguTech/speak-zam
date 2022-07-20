@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		630ED4E228879CF200FB363C /* ResultCellCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630ED4E128879CF200FB363C /* ResultCellCustom.swift */; };
+		630ED4E62887AFFA00FB363C /* PracticeDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6390BCF4287C46020079302B /* PracticeDataModel.xcdatamodeld */; };
+		630ED4E72887B02500FB363C /* Practice+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390BCF7287C6D370079302B /* Practice+CoreDataClass.swift */; };
+		630ED4E82887B02800FB363C /* Practice+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390BCF8287C6D370079302B /* Practice+CoreDataProperties.swift */; };
 		634FB52128702FCF009F00C1 /* IndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634FB52028702FCF009F00C1 /* IndicatorViewController.swift */; };
 		634FB52328702FE3009F00C1 /* IndicatorStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 634FB52228702FE3009F00C1 /* IndicatorStoryboard.storyboard */; };
 		6390BCF6287C46020079302B /* PracticeDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6390BCF4287C46020079302B /* PracticeDataModel.xcdatamodeld */; };
@@ -113,6 +117,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		630ED4E128879CF200FB363C /* ResultCellCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCellCustom.swift; sourceTree = "<group>"; };
 		634FB52028702FCF009F00C1 /* IndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorViewController.swift; sourceTree = "<group>"; };
 		634FB52228702FE3009F00C1 /* IndicatorStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IndicatorStoryboard.storyboard; sourceTree = "<group>"; };
 		6390BCF5287C46020079302B /* PracticeDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PracticeDataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -198,6 +203,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		630ED4E028879CE000FB363C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				630ED4E128879CF200FB363C /* ResultCellCustom.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		632E4AEC287FC17B00440B43 /* PracticeItem */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +291,7 @@
 		AC40910028818B2800254937 /* DaSpeakable Watch WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				630ED4E028879CE000FB363C /* Cell */,
 				ACAD10D728855E6500CD7B65 /* View */,
 				ACAD10D628855E5A00CD7B65 /* Model */,
 				AC40910328818B2800254937 /* DaSpeakable_MeApp.swift */,
@@ -676,9 +690,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				630ED4E62887AFFA00FB363C /* PracticeDataModel.xcdatamodeld in Sources */,
 				AC40910228818B2800254937 /* ContentView.swift in Sources */,
 				AC40910428818B2800254937 /* DaSpeakable_MeApp.swift in Sources */,
+				630ED4E228879CF200FB363C /* ResultCellCustom.swift in Sources */,
+				630ED4E72887B02500FB363C /* Practice+CoreDataClass.swift in Sources */,
 				ACAD10E72885641A00CD7B65 /* ResultView.swift in Sources */,
+				630ED4E82887B02800FB363C /* Practice+CoreDataProperties.swift in Sources */,
 				ACAD10DB28855F5800CD7B65 /* StartPracticeView.swift in Sources */,
 				ACAD10E4288563E700CD7B65 /* PracticeView.swift in Sources */,
 				ACAD10D928855EC200CD7B65 /* OpeningView.swift in Sources */,
