@@ -499,6 +499,7 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
                                       dataPracticeFwHa: self.counterFwHa,
                                       dataPracticeFwHm: self.counterFwHm,
                                       dataPracticeOverallScore: ((self.wordsPerMinutes + self.clearRate + self.smoothRate)/3))
+                
                 let resultVc = UIStoryboard(name: "ResultStoryboard", bundle: nil).instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
                 
                 //self.navigationController?.pushViewController(resultVc, animated: true)

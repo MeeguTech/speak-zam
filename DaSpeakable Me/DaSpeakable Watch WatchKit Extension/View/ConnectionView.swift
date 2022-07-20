@@ -14,7 +14,6 @@ struct ConnectionView: View {
     @State var isOnPreactice: Bool = false
     
     var body: some View {
-        
         if model.isOnPracticeScreen{
             
             StartPracticeView()
@@ -28,9 +27,6 @@ struct ConnectionView: View {
                     .font(.system(size: 16))
             }
         }
-        
-       
-        
     }
 }
 
