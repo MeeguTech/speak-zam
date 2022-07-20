@@ -20,10 +20,8 @@ struct PracticeModel: Codable{
     var practiceFwEh: Int = 0
     var practiceFwHa: Int = 0
     var practiceFwHm: Int = 0
-    
     var currentDate: String = ""
-    
-    var overallScore:Double = 0.0
+    var overallScore: Double = 0.0
     
     init(practiceTitle: String, practiceWPM: Double, practiceArticulation: Double, practiceSmoothRate: Double, practiceVideoUrl: String, practiceFwEh: Int, practiceFwHa: Int, practiceFwHm: Int, currentDate:String) {
         self.practiceTitle = practiceTitle

@@ -29,8 +29,6 @@ struct PracticeDetail{
 
 
 class ResultViewController: UIViewController {
-    
-    
     @IBOutlet weak var resultTableView: UITableView!
     @IBOutlet weak var resultHeader:UIView!
     @IBOutlet weak var resultLabelTitle: UILabel!
@@ -58,12 +56,20 @@ class ResultViewController: UIViewController {
     var selectedPracticeDetail: PracticeDetail!
     
     var scrollWidth: CGFloat! = 0.0
-        var scrollHeight: CGFloat! = 0.0
+    var scrollHeight: CGFloat! = 0.0
+    
+    //MARK: watch conn
+    var watchConn = WatchConnectivityService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let currentScreen = "resultView"
+        UserDefaults.standard.set(currentScreen, forKey: "currentScreen")
+        
         setupResultTableView()
+        
+        watchConn.delegateRetake = self
         
         //assignCell()
         
@@ -96,21 +102,31 @@ class ResultViewController: UIViewController {
         //print(overallScore)
         
     }
-
+    
+    func sendCurrentScreen(currentScreen: String) {
+        //print(message)
+        // MARK: Send message menggunakan WCSession
+        
+        let dataCurrentScreen = ["currentScreen": currentScreen]
+        //watchConn.wcSession.sendMessage(dataCurrentScreen, replyHandler: nil)
+    }
     
     func viewConfig(){
         //let currentPracticeIndex = allPractice.count-1
         //print(selectedHistory)
         //overallScore = Int((allPractice[currentPracticeIndex].practiceWPM + allPractice[currentPracticeIndex].practiceArticulation + allPractice[currentPracticeIndex].practiceSmoothRate)/3)
         
-        let score = allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceOverallScore
+        //self.overallScore = ((practiceWPM+practiceArticulation+practiceSmoothRate)/3)
+        let score = (allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceWPM + allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceArticulation + allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceSmoothRate)/3
+        
+        print("overall score", score)
         
         resultHeader.cornerRadius(usingCorners: [.topLeft,.bottomRight], cornerRadii: CGSize(width: 50, height: 50))
         resultHeader.backgroundColor = UIColor(patternImage: UIImage(named: "badgeGradient")!)
         
-        resultLabelTitle.text = "\(String(describing: allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceTitle)) Summary"
+        resultLabelTitle.text = "\(allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceTitle ?? "Practice") Summary"
         
-        resultOveralScoreLabel.text = "\(Int(allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceOverallScore))%"
+        resultOveralScoreLabel.text = "\(Int(score))%"
         
         if score > 90 {
             starsOneImage.image = UIImage(named: "star")
@@ -148,6 +164,44 @@ class ResultViewController: UIViewController {
         //print(overallScore)
     }
     
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        allPractice = PracticeService().getAllPractice()
+        self.resultTableView.reloadData()
+    }
+    
+    func setupResultTableView() {
+        resultTableView.delegate = self
+        resultTableView.dataSource = self
+        
+        
+    }
+    
+    //MARK: replay practice
+    
+    @IBAction func didTapVideoReplay(_ sender: Any) {
+        //print("url",allPractice[allPractice.count-1].practiceVideoUrl)
+        //let url = URL(fileURLWithPath: Bundle.main.path(forResource: allPractice[allPractice.count-1].practiceVideoUrl, ofType: "mp4")!)
+        
+        let newUrl = URL(fileURLWithPath: allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceVideoUrl ?? "")
+        
+        print(newUrl)
+        
+        //let videoPlayer = AVPlayer(url: newUrl)
+        
+        let player = AVPlayer(url: newUrl)
+        
+        // Create a new AVPlayerViewController and pass it a reference to the player.
+        let controller = AVPlayerViewController()
+        controller.player = player
+        
+        // Modally present the player and call the player's play() method when complete.
+        present(controller, animated: true) {
+            player.play()
+        }
+        
+    }
     func configDetailPage(){
         
         let currentPracticeIndex = allPractice.count-1
@@ -243,41 +297,10 @@ class ResultViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        allPractice = PracticeService().getAllPractice()
-        self.resultTableView.reloadData()
-    }
-    
-    func setupResultTableView() {
-        resultTableView.delegate = self
-        resultTableView.dataSource = self
-        
-        
-    }
-    
-    //MARK: replay practice
-    
-    @IBAction func didTapVideoReplay(_ sender: Any) {
-        //print("url",allPractice[allPractice.count-1].practiceVideoUrl)
-        //let url = URL(fileURLWithPath: Bundle.main.path(forResource: allPractice[allPractice.count-1].practiceVideoUrl, ofType: "mp4")!)
-        
-        let newUrl = URL(fileURLWithPath: allPractice[(selectedHistory.isEmpty ? allPractice.count-1 : selectedHistory[0])].practiceVideoUrl ?? "")
-        
-        print(newUrl)
-        
-        //let videoPlayer = AVPlayer(url: newUrl)
-        
-        let player = AVPlayer(url: newUrl)
-        
-        // Create a new AVPlayerViewController and pass it a reference to the player.
-        let controller = AVPlayerViewController()
-        controller.player = player
-        
-        // Modally present the player and call the player's play() method when complete.
-        present(controller, animated: true) {
-            player.play()
+    func dismissResultScreen(retakeButtonDidTapped: Bool){
+        if retakeButtonDidTapped{
+            self.dismiss(animated: true, completion: nil)
         }
-        
     }
     
 }
@@ -346,7 +369,6 @@ extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-
 extension UIView {
     func setCornerRadius(radius: CGFloat) {
         self.layer.cornerRadius = radius
@@ -356,5 +378,11 @@ extension UIView {
         clipsToBounds = true
         layer.cornerRadius = cornerRadius
         layer.maskedCorners = CACornerMask(arrayLiteral: maskedCorners)
+    }
+}
+
+extension ResultViewController: WatchConnectivityServiceRetakePracticeDelegate{
+    func retakePractice(isRetake: Bool) {
+        dismissResultScreen(retakeButtonDidTapped: isRetake)
     }
 }

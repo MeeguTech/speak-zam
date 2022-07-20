@@ -9,9 +9,10 @@ import UIKit
 import Photos
 import Speech
 import SoundAnalysis
+import SwiftUI
 
 class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
-    
+
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
@@ -44,6 +45,12 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
     var counterFwEh: Int = 0
     var counterFwHm: Int = 0
     var counterFwHa: Int = 0
+    
+    //MARK: watch conn
+    var watchConn = WatchConnectivityService()
+    var isOpenPractice:Bool = false
+    
+    //let watchConService = UIHostingController(rootView: WatchConnectivityService())
     
     @IBOutlet weak var practiceButton: UIButton!
     @IBOutlet weak var previewImageView: UIImageView!
@@ -124,7 +131,14 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let currentScreen = "recordingView"
+        UserDefaults.standard.set(currentScreen, forKey: "currentScreen")
+        sendCurrentScreen(currentScreen: UserDefaults.standard.string(forKey: "currentScreen")!)
         
+        watchConn.delegate = self
+        
+        isOpenPractice.toggle()
+        sendMessage(isOnPracticeScreen:isOpenPractice)
         practiceButton.isUserInteractionEnabled = false
         practiceButton.tintColor = UIColor(named: "Winter")
         
@@ -141,6 +155,7 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
             self.practiceButton.isUserInteractionEnabled = true
             self.toggleCameraButton.setImage(UIImage(named: "flip"), for: .normal)
         }
+        print(isOpenPractice)
         
     }
     
@@ -149,7 +164,14 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        isOpenPractice.toggle()
+        sendMessage(isOnPracticeScreen:isOpenPractice)
+        //print(isOpenPractice)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
+        
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
@@ -189,6 +211,40 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
         
     }
+    
+    func sendMessage(isOnPracticeScreen:Bool) {
+        //print(message)
+        // MARK: Send message menggunakan WCSession
+        
+        let dataMessage = ["isOnPracticeScreen":isOnPracticeScreen]
+        watchConn.wcSession.sendMessage(dataMessage, replyHandler: nil)
+    }
+    
+    func sendCurrentScreen(currentScreen: String) {
+        //print(message)
+        // MARK: Send message menggunakan WCSession
+        
+        //let dataCurrentScreen = ["currentScreen": currentScreen]
+        //watchConn.wcSession.sendMessage(dataCurrentScreen, replyHandler: nil)
+    }
+    
+    func sendPracticeData(dataPracticeTitle: String, dataPracticeWPM: Double, dataPracticeArticulation: Double, dataPracticeSmoothRate: Double, dataPracticeVideoUrl: String, dataPracticeFwEh: Int, dataPracticeFwHa: Int, dataPracticeFwHm: Int, dataPracticeOverallScore: Double) {
+        //print(message)
+        // MARK: Send data practice menggunakan WCSession
+        
+        let dataPractice = ["dataPracticeTitle": dataPracticeTitle,
+                            "dataPracticeWPM": dataPracticeWPM,
+                            "dataPracticeArticulation": dataPracticeArticulation,
+                            "dataPracticeSmoothRate": dataPracticeSmoothRate,
+                            "dataPracticeVideoUrl": dataPracticeVideoUrl,
+                            "dataPracticeFwEh": dataPracticeFwEh,
+                            "dataPracticeFwHa": dataPracticeFwHa,
+                            "dataPracticeFwHm": dataPracticeFwHm,
+                            "dataPracticeOverallScore" : dataPracticeOverallScore] as [String : Any]
+        
+        watchConn.wcSession.sendMessage(dataPractice, replyHandler: nil)
+    }
+    
     // MARK: Filler Classifier
     func createClassificationRequest() {
         
@@ -329,15 +385,6 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
                 showToast(message: "slow down Eminem😭", fontSize: 15)
             }
         }
-        
-//        if estimatedTime == speakTime && totalWord ?? 0 < 25{
-//            showToast(message: "Faster Champp!!🚀", fontSize: 30)
-//            print("to slow")
-//        }
-//        else if (estimatedTime == speakTime && totalWord ?? 0 > 35){
-//            showToast(message: "wow slow down Eminem😭", fontSize: 30)
-//            print("to fast")
-//        }
     }
     
     
@@ -398,8 +445,22 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
     // MARK: Start Practice
     @IBAction func didTapOnTakePhotoButton(_ sender: Any) {
         
+        startPractice()
         
-        
+    }
+    
+    func startPracticeFromWatch(startButtonDidTapped:Bool){
+        //print("in IOs from watch", startButtonDidTapped)
+        if startButtonDidTapped{
+            print("in")
+            startPractice()
+        }else if !startButtonDidTapped{ //TODO: compose new logic
+            startPractice()
+            print("out")
+        }
+    }
+    
+    func startPractice(){
         if self.audioEngine.isRunning {
             self.audioEngine.stop()
             
@@ -416,8 +477,28 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
                 // append new practice
                 //self.viewModel.addPractice(practiceTitle: "Practice \(self.viewModel.items.count+1)", practiceWPM: self.wordsPerMinutes, practiceArticulation: self.clearRate, practiceSmoothRate: self.smoothRate, practiceVideoUrl:self.cameraConfig.getVideoUrl(), practiceFwEh: self.counterFwEh, practiceFwHa: self.counterFwHa, practiceFwHm: self.counterFwHm, currentDate: TimerHelper().getCurrentDate())
                 
-                PracticeService().savePractice(practiceTitle: "Practice \(self.allPractice.count+1)", practiceWPM: self.wordsPerMinutes, practiceArticulation: self.clearRate, practiceSmoothRate: self.smoothRate, practiceVideoUrl:self.cameraConfig.getVideoUrl(), practiceFwEh: Int64(self.counterFwEh), practiceFwHa: Int64(self.counterFwHa), practiceFwHm: Int64(self.counterFwHm), practiceCurrentDate: TimerHelper().getCurrentDate(), practiceOverallScore: 0)
+                PracticeService().savePractice(
+                    practiceTitle: "Practice \(self.allPractice.count+1)",
+                    practiceWPM: self.wordsPerMinutes,
+                    practiceArticulation: self.clearRate,
+                    practiceSmoothRate: self.smoothRate,
+                    practiceVideoUrl: self.cameraConfig.getVideoUrl(),
+                    practiceFwEh: Int64(self.counterFwEh),
+                    practiceFwHa: Int64(self.counterFwHa),
+                    practiceFwHm: Int64(self.counterFwHm),
+                    practiceCurrentDate: TimerHelper().getCurrentDate(),
+                    practiceOverallScore: (self.wordsPerMinutes + self.clearRate + self.smoothRate)/3)
                 
+                
+                self.sendPracticeData(dataPracticeTitle: "Practice \(self.allPractice.count+1)",
+                                      dataPracticeWPM: self.wordsPerMinutes,
+                                      dataPracticeArticulation: self.clearRate,
+                                      dataPracticeSmoothRate: self.smoothRate,
+                                      dataPracticeVideoUrl: self.cameraConfig.getVideoUrl(),
+                                      dataPracticeFwEh: self.counterFwEh,
+                                      dataPracticeFwHa: self.counterFwHa,
+                                      dataPracticeFwHm: self.counterFwHm,
+                                      dataPracticeOverallScore: ((self.wordsPerMinutes + self.clearRate + self.smoothRate)/3))
                 let resultVc = UIStoryboard(name: "ResultStoryboard", bundle: nil).instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
                 
                 //self.navigationController?.pushViewController(resultVc, animated: true)
@@ -458,7 +539,6 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
                 UISaveVideoAtPathToSavedPhotosAlbum(url.path, self, #selector(self.video(_:didFinishSavingWithError:contextInfo:)), nil)
             }
         }
-        
     }
     
     
@@ -477,6 +557,8 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
     // MARK: back to main screen
     @IBAction func didTapCancel (){
         
+        isOpenPractice = false
+        print(isOpenPractice)
         if videoRecordingStarted{
             let alert = UIAlertController(title: "Progress Not Going To Save", message: "Are you sure you want to go back? your progress is NOT going to save", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
@@ -546,28 +628,9 @@ extension RecordingViewController: SNResultsObserving {
     }
 }
 
-//Disabling Xcode’s OS-Level Debug Logging
-//1- From Xcode menu open: Product > Scheme > Edit Scheme
-//2- On your Environment Variables set OS_ACTIVITY_MODE in the value set disable
-// this will stop the warning but not the error
-
-extension RecordingViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if info[UIImagePickerController.InfoKey.originalImage] is UIImage {
-            //            self.galleryButton.contentMode = .scaleAspectFit
-            //            self.galleryButton.setImage( pickedImage, for: .normal)
-        }
-        if let videoURL = info[UIImagePickerController.InfoKey.mediaURL] as? URL {
-            print("videoURL:\(String(describing: videoURL))")
-            self.videoSaveAt = String(describing: videoURL)
-        }
-        
-        self.dismiss(animated: true, completion: nil)
+extension RecordingViewController: WatchConnectivityServiceDelegate{
+    func startPractice(isStart: Bool) {
+        startPracticeFromWatch(startButtonDidTapped:isStart)
     }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
-    
 }
 

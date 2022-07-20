@@ -8,8 +8,6 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    
-    
     @IBOutlet weak var startPracticeButton:UIButton!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var practiceLabel: UILabel!
@@ -21,21 +19,39 @@ class MainViewController: UIViewController {
     
     var isPinned:[Int]?
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let currentScreen = "mainView"
+        UserDefaults.standard.set(currentScreen, forKey: "currentScreen")
+        sendCurrentScreen(currentScreen: UserDefaults.standard.string(forKey: "currentScreen")!)
+        
         setupTableView()
         setUpTablePractice()
         configView()
         
+        //print("iOS: ", watchConn.isStartPractice)
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        
+        
         DispatchQueue.main.async {
             self.allPractice = PracticeService().getAllPractice()
             self.practiceTableView.reloadData()
             //self.configView()
         }
+    }
+    
+    func sendCurrentScreen(currentScreen: String) {
+        //print(message)
+        // MARK: Send message menggunakan WCSession
+        
+        let dataCurrentScreen = ["currentScreen": currentScreen]
+        //watchConn.wcSession.sendMessage(dataCurrentScreen, replyHandler: nil)
     }
     
     func setUpTablePractice(){
