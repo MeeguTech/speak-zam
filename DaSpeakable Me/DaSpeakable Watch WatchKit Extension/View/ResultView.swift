@@ -19,13 +19,13 @@ struct ResultView: View {
     
     var body: some View {
         VStack {
+            Text(String(model.dataPracticeOverallScore))
+                .font(.system(size: 20, weight: .semibold))
+                .background(Image("watchBadge").resizable()
+                    .scaledToFit()
+                    .frame(width: 100,height:100))
+            
             List {
-                Text(String(model.dataPracticeOverallScore))
-                    .font(.system(size: 20, weight: .semibold))
-                    .background(Image("watchBadge").resizable()
-                        .scaledToFit()
-                        .frame(width: 100,height:100))
-                
                 ResultCellCustom()
             }.onAppear(){
                 print("hey")
@@ -42,7 +42,8 @@ struct ResultView: View {
                     Text("Done")
                 }
             }
-            
+        }.onAppear(){
+            print("model.dataPracticeOverallScore: ", model.dataPracticeOverallScore)
         }
     }
     

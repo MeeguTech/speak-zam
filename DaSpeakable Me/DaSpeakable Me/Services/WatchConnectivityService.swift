@@ -41,6 +41,9 @@ class WatchConnectivityService: NSObject, WCSessionDelegate {
 //    var dataPracticeFwHm: Int = 0
 //    var dataPracticeOverallScore: Double = 0
     
+    //send current sccreen
+    var dataCurrentScreen: String = ""
+    
     //init session and activate watch connectivity
     init(session: WCSession = .default){
         self.wcSession = session
@@ -66,6 +69,18 @@ class WatchConnectivityService: NSObject, WCSessionDelegate {
 //            self.dataPracticeFwHa = message["dataPracticeFwHa"] as? Int ?? 0
 //            self.dataPracticeFwHm = message["dataPracticeFwHm"] as? Int ?? 0
 //            self.dataPracticeOverallScore = message["dataPracticeOverallScore"] as? Double ?? 0
+            
+            let screen = message["dataCurrentScreen"] as? String ?? "unknown"
+            switch screen {
+            case "recordingView":
+                self.dataCurrentScreen = "recordingView"
+            case "mainView":
+                self.dataCurrentScreen = "mainView"
+            case"resultView":
+                self.dataCurrentScreen = "resultView"
+            default:
+                self.dataCurrentScreen = "unknown"
+            }
             
             self.delegate?.startPractice(isStart: self.isStartPractice)
             self.delegateRetake?.retakePractice(isRetake: self.isRetakePractice)

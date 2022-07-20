@@ -29,7 +29,6 @@ struct PracticeDetail{
 
 
 class ResultViewController: UIViewController {
-    
     @IBOutlet weak var resultTableView: UITableView!
     @IBOutlet weak var resultHeader:UIView!
     @IBOutlet weak var resultLabelTitle: UILabel!
@@ -64,6 +63,9 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let currentScreen = "resultView"
+        UserDefaults.standard.set(currentScreen, forKey: "currentScreen")
         
         setupResultTableView()
         
@@ -100,7 +102,14 @@ class ResultViewController: UIViewController {
         //print(overallScore)
         
     }
-
+    
+    func sendCurrentScreen(currentScreen: String) {
+        //print(message)
+        // MARK: Send message menggunakan WCSession
+        
+        let dataCurrentScreen = ["currentScreen": currentScreen]
+        //watchConn.wcSession.sendMessage(dataCurrentScreen, replyHandler: nil)
+    }
     
     func viewConfig(){
         //let currentPracticeIndex = allPractice.count-1
