@@ -110,7 +110,6 @@ class ResultViewController: UIViewController {
         let dataCurrentScreen = ["currentScreen": currentScreen]
         //watchConn.wcSession.sendMessage(dataCurrentScreen, replyHandler: nil)
     }
-
     
     func viewConfig(){
         //let currentPracticeIndex = allPractice.count-1
