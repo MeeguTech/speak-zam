@@ -16,6 +16,7 @@ struct ResultView: View {
     @State var selection: Int? = nil
     @State var isRetakePractice: Bool = false
     
+    
     var body: some View {
         VStack {
             List {
@@ -26,16 +27,20 @@ struct ResultView: View {
                         .frame(width: 100,height:100))
                 
                 ResultCellCustom()
+            }.onAppear(){
+                print("hey")
             }
             
             NavigationLink(destination: StartPracticeView(), tag: 1, selection: $selection) {
                 Button(action: {
                     print("is tap")
+                    
+                    self.selection = 1
                     isRetakePractice.toggle()
                     sendMessage(isRetake: isRetakePractice)
                 }) {
                     Text("Done")
-            }
+                }
             }
             
         }

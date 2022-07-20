@@ -32,7 +32,7 @@ struct StartPracticeView: View {
                             .background(LinearGradient(gradient: Gradient(colors: [Color(UIColor(named: "PastelBlue")!), Color(UIColor(named: "Navy")!)]), startPoint: .top, endPoint: .bottom))
                             .clipShape(Circle())
                             .font(.system(size: 25))
-                    }
+                    }.buttonStyle(PlainButtonStyle())
                 }.buttonStyle(PlainButtonStyle())
                 
                 
@@ -45,7 +45,7 @@ struct StartPracticeView: View {
     }
     
     func sendMessage(isStart:Bool) {
-        print(isStart)
+        print("INI DI START",isStart)
         
         let dataMessage = ["isStartPractice": isStart]
         model.wcSession.sendMessage(dataMessage, replyHandler: nil)

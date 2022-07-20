@@ -24,6 +24,7 @@
 		63A2E20B286F352E00C67464 /* ResultStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63A2E20A286F352E00C67464 /* ResultStoryboard.storyboard */; };
 		63A2E217286F37A700C67464 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2E215286F37A700C67464 /* ResultTableViewCell.swift */; };
 		63A2E218286F37A700C67464 /* ResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63A2E216286F37A700C67464 /* ResultTableViewCell.xib */; };
+		AC2E57132888681800D9DA79 /* ConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2E57122888681800D9DA79 /* ConnectionView.swift */; };
 		AC4090F728818B2800254937 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC4090F628818B2800254937 /* Assets.xcassets */; };
 		AC4090FD28818B2800254937 /* DaSpeakable Watch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AC4090FC28818B2800254937 /* DaSpeakable Watch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AC40910228818B2800254937 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40910128818B2800254937 /* ContentView.swift */; };
@@ -49,7 +50,6 @@
 		AC8DF269286C1EE9001ADFF3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DF268286C1EE9001ADFF3 /* MainViewController.swift */; };
 		AC8DF26D286C2125001ADFF3 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DF26C286C2125001ADFF3 /* CustomButton.swift */; };
 		AC8DF26F286C38A6001ADFF3 /* SpeechArticulationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DF26E286C38A6001ADFF3 /* SpeechArticulationHelper.swift */; };
-		ACAD10D928855EC200CD7B65 /* OpeningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAD10D828855EC200CD7B65 /* OpeningView.swift */; };
 		ACAD10DB28855F5800CD7B65 /* StartPracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAD10DA28855F5800CD7B65 /* StartPracticeView.swift */; };
 		ACAD10E4288563E700CD7B65 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAD10E3288563E700CD7B65 /* PracticeView.swift */; };
 		ACAD10E72885641A00CD7B65 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAD10E62885641A00CD7B65 /* ResultView.swift */; };
@@ -131,6 +131,7 @@
 		63A2E20A286F352E00C67464 /* ResultStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResultStoryboard.storyboard; sourceTree = "<group>"; };
 		63A2E215286F37A700C67464 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		63A2E216286F37A700C67464 /* ResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultTableViewCell.xib; sourceTree = "<group>"; };
+		AC2E57122888681800D9DA79 /* ConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionView.swift; sourceTree = "<group>"; };
 		AC4090F428818B2700254937 /* DaSpeakable Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DaSpeakable Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC4090F628818B2800254937 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC4090FC28818B2800254937 /* DaSpeakable Watch WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DaSpeakable Watch WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,7 +162,6 @@
 		AC8DF268286C1EE9001ADFF3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		AC8DF26C286C2125001ADFF3 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		AC8DF26E286C38A6001ADFF3 /* SpeechArticulationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechArticulationHelper.swift; sourceTree = "<group>"; };
-		ACAD10D828855EC200CD7B65 /* OpeningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningView.swift; sourceTree = "<group>"; };
 		ACAD10DA28855F5800CD7B65 /* StartPracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPracticeView.swift; sourceTree = "<group>"; };
 		ACAD10E3288563E700CD7B65 /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
 		ACAD10E62885641A00CD7B65 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
@@ -431,7 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				AC40910128818B2800254937 /* ContentView.swift */,
-				ACAD10D828855EC200CD7B65 /* OpeningView.swift */,
+				AC2E57122888681800D9DA79 /* ConnectionView.swift */,
 				ACAD10DA28855F5800CD7B65 /* StartPracticeView.swift */,
 				ACAD10E3288563E700CD7B65 /* PracticeView.swift */,
 				ACAD10E62885641A00CD7B65 /* ResultView.swift */,
@@ -699,8 +699,8 @@
 				630ED4E82887B02800FB363C /* Practice+CoreDataProperties.swift in Sources */,
 				ACAD10DB28855F5800CD7B65 /* StartPracticeView.swift in Sources */,
 				ACAD10E4288563E700CD7B65 /* PracticeView.swift in Sources */,
-				ACAD10D928855EC200CD7B65 /* OpeningView.swift in Sources */,
 				ACAD10EA28856A9C00CD7B65 /* WatchModel.swift in Sources */,
+				AC2E57132888681800D9DA79 /* ConnectionView.swift in Sources */,
 				AC40910628818B2800254937 /* ComplicationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

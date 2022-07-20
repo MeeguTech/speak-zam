@@ -13,13 +13,13 @@ struct ResultCellCustom: View {
     //let practice = model.dataPractice
     
     var body: some View{
-
+        
         HStack{
             Text("Speaking Pace")
                 .foregroundColor(.gray)
                 .font(.system(size: 20))
             Spacer()
-            Text(" :  " + String(Int(model.dataPracticeWPM)))
+            Text(" :  " + String(model.dataPracticeWPM))
                 .font(.system(size: 20, weight: .semibold))
         }
         
@@ -28,7 +28,7 @@ struct ResultCellCustom: View {
                 .foregroundColor(.gray)
                 .font(.system(size: 20))
             Spacer()
-            Text(" :  " + String(Int(model.dataPracticeArticulation)))
+            Text(" :  " + String(model.dataPracticeArticulation))
                 .font(.system(size: 20, weight: .semibold))
         }
         
@@ -37,7 +37,7 @@ struct ResultCellCustom: View {
                 .foregroundColor(.gray)
                 .font(.system(size: 20))
             Spacer()
-            Text(" :  " + String(Int(model.dataPracticeSmoothRate)))
+            Text(" :  " + String(model.dataPracticeSmoothRate))
                 .font(.system(size: 20, weight: .semibold))
         }
         
@@ -49,7 +49,7 @@ struct ResultCellCustom: View {
             Text(" :  " + String(model.dataPracticeFwEh +
                                  model.dataPracticeFwHa +
                                  model.dataPracticeFwHm))
-                .font(.system(size: 20, weight: .semibold))
+            .font(.system(size: 20, weight: .semibold))
         }
     }
 }

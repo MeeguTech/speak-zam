@@ -144,7 +144,7 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         watchConn.delegate = self
         
-        isOpenPractice = true
+        isOpenPractice.toggle()
         sendMessage(isOnPracticeScreen:isOpenPractice)
         practiceButton.isUserInteractionEnabled = false
         practiceButton.tintColor = UIColor(named: "Winter")
@@ -172,7 +172,8 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        
+        isOpenPractice.toggle()
+        sendMessage(isOnPracticeScreen:isOpenPractice)
         //print(isOpenPractice)
     }
     
@@ -452,7 +453,7 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
         if startButtonDidTapped{
             print("in")
             startPractice()
-        }else if !startButtonDidTapped{
+        }else if !startButtonDidTapped{ //TODO: compose new logic
             startPractice()
             print("out")
         }
@@ -496,7 +497,7 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
                                       dataPracticeFwEh: self.counterFwEh,
                                       dataPracticeFwHa: self.counterFwHa,
                                       dataPracticeFwHm: self.counterFwHm,
-                                      dataPracticeOverallScore: (self.wordsPerMinutes + self.clearRate + self.smoothRate)/3)
+                                      dataPracticeOverallScore: ((self.wordsPerMinutes + self.clearRate + self.smoothRate)/3) )
                 
                 let resultVc = UIStoryboard(name: "ResultStoryboard", bundle: nil).instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
                 

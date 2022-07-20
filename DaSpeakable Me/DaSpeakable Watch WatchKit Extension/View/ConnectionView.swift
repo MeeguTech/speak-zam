@@ -1,29 +1,24 @@
 //
-//  OpeningScreen.swift
+//  ConnectionView.swift
 //  DaSpeakable Watch WatchKit Extension
 //
-//  Created by Agil Sulapohan Suaga on 18/07/22.
+//  Created by Agil Sulapohan Suaga on 21/07/22.
 //
 
 import SwiftUI
 
-struct OpeningView: View {
-    
-    //TODO: caritau bagaimana cara mengetahui jikalau app yg di iOS sudah di practice screen
+struct ConnectionView: View {
     
     @ObservedObject var model = WatchModel()
     
-    //@State var isStartPractice:Bool = false
-    //@Binding var isOnPracticeScreen:Bool
-    
+    @State var isOnPreactice: Bool = false
     
     var body: some View {
         
-        NavigationView{
-//            if model.isOnPracticeScreen{
-//                NavigationLink(destination: StartPracticeView())
-//            }else{
-//
+        if model.isOnPracticeScreen{
+            
+            StartPracticeView()
+        }else{
             VStack(alignment:.leading) {
                 Text("It’s time to practice your presentation!")
                     .font(.system(size: 20))
@@ -31,19 +26,16 @@ struct OpeningView: View {
                 Text("Tap \(Text("Start Practice").bold()) on your SpeakZam iPhone")
                     .foregroundColor(.gray)
                     .font(.system(size: 16))
-//            }
-
-            //print(model.isOnPracticeScreen)
             }
         }
         
+       
+        
     }
-    
-    
 }
 
-struct OpeningView_Previews: PreviewProvider {
+struct ConnectionView_Previews: PreviewProvider {
     static var previews: some View {
-        OpeningView()
+        ConnectionView()
     }
 }
