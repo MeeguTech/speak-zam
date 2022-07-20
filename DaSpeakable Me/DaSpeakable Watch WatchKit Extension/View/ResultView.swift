@@ -18,26 +18,18 @@ struct ResultView: View {
     
     var body: some View {
         VStack {
+            Text(String(model.dataPracticeOverallScore))
+                .font(.system(size: 20, weight: .semibold))
+                .background(Image("watchBadge").resizable()
+                    .scaledToFit()
+                    .frame(width: 100,height:100))
+            
             List {
-                Text(String(model.dataPracticeOverallScore))
-                    .font(.system(size: 20, weight: .semibold))
-                    .background(Image("watchBadge").resizable()
-                        .scaledToFit()
-                        .frame(width: 100,height:100))
-                
                 ResultCellCustom()
             }
             
-            NavigationLink(destination: StartPracticeView(), tag: 1, selection: $selection) {
-                Button(action: {
-                    print("is tap")
-                    isRetakePractice.toggle()
-                    sendMessage(isRetake: isRetakePractice)
-                }) {
-                    Text("Done")
-            }
-            }
-            
+        }.onAppear(){
+            print("model.dataPracticeOverallScore: ", model.dataPracticeOverallScore)
         }
     }
     

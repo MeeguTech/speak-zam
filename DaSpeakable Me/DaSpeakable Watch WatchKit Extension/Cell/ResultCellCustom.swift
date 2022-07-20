@@ -19,7 +19,7 @@ struct ResultCellCustom: View {
                 .foregroundColor(.gray)
                 .font(.system(size: 20))
             Spacer()
-            Text(" :  " + String(Int(model.dataPracticeWPM)))
+            Text(" :  " + String(model.dataPracticeWPM))
                 .font(.system(size: 20, weight: .semibold))
         }
         
@@ -28,7 +28,7 @@ struct ResultCellCustom: View {
                 .foregroundColor(.gray)
                 .font(.system(size: 20))
             Spacer()
-            Text(" :  " + String(Int(model.dataPracticeArticulation)))
+            Text(" :  " + String(model.dataPracticeArticulation))
                 .font(.system(size: 20, weight: .semibold))
         }
         
@@ -37,7 +37,7 @@ struct ResultCellCustom: View {
                 .foregroundColor(.gray)
                 .font(.system(size: 20))
             Spacer()
-            Text(" :  " + String(Int(model.dataPracticeSmoothRate)))
+            Text(" :  " + String(model.dataPracticeSmoothRate))
                 .font(.system(size: 20, weight: .semibold))
         }
         

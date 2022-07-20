@@ -11,16 +11,8 @@ import Speech
 import SoundAnalysis
 import SwiftUI
 
-//
-//enum View: String {
-//    case recordingView = "recordingView"
-//    case mainView = "mainView"
-//    case resultView = "resultView"
-//}
-
 class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
- 
-    
+
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
@@ -35,8 +27,6 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
     var timer:Timer = Timer()
     var isTimerRun:Bool = false
     var finalWord:Int = 0
-    
-    
     
     private var soundClassifier = try! FillerWordClassifier()
     let queue = DispatchQueue(label: "gilapo.DaSpeakable-Me")
@@ -141,6 +131,9 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let currentScreen = "recordingView"
+        UserDefaults.standard.set(currentScreen, forKey: "currentScreen")
+        sendCurrentScreen(currentScreen: UserDefaults.standard.string(forKey: "currentScreen")!)
         
         watchConn.delegate = self
         
@@ -224,6 +217,14 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         let dataMessage = ["isOnPracticeScreen":isOnPracticeScreen]
         watchConn.wcSession.sendMessage(dataMessage, replyHandler: nil)
+    }
+    
+    func sendCurrentScreen(currentScreen: String) {
+        //print(message)
+        // MARK: Send message menggunakan WCSession
+        
+        let dataCurrentScreen = ["currentScreen": currentScreen]
+        //watchConn.wcSession.sendMessage(dataCurrentScreen, replyHandler: nil)
     }
     
     func sendPracticeData(dataPracticeTitle: String, dataPracticeWPM: Double, dataPracticeArticulation: Double, dataPracticeSmoothRate: Double, dataPracticeVideoUrl: String, dataPracticeFwEh: Int, dataPracticeFwHa: Int, dataPracticeFwHm: Int, dataPracticeOverallScore: Double) {
@@ -496,7 +497,7 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
                                       dataPracticeFwEh: self.counterFwEh,
                                       dataPracticeFwHa: self.counterFwHa,
                                       dataPracticeFwHm: self.counterFwHm,
-                                      dataPracticeOverallScore: (self.wordsPerMinutes + self.clearRate + self.smoothRate)/3)
+                                      dataPracticeOverallScore: ((self.wordsPerMinutes + self.clearRate + self.smoothRate)/3))
                 
                 let resultVc = UIStoryboard(name: "ResultStoryboard", bundle: nil).instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
                 
