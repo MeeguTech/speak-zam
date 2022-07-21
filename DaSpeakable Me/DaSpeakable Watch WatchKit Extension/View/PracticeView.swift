@@ -17,7 +17,7 @@ struct PracticeView: View {
     var model = WatchModel()
     
     @State var selection: Int? = nil
-    @Binding var isStartPractice:Bool
+    //@Binding var isStartPractice:Bool
     
     var body: some View {
         
@@ -32,8 +32,8 @@ struct PracticeView: View {
                     Button(action: {
                         self.stopTimer()
                         self.selection = 1
-                        isStartPractice.toggle()
-                        sendMessage(isStart: isStartPractice)
+                        //isStartPractice.toggle()
+                        sendMessage(isStart: "FINISH")
                     }){
                         Image(systemName: "xmark")
                             .foregroundColor(.red)
@@ -49,8 +49,8 @@ struct PracticeView: View {
         
         
     }
-    func sendMessage(isStart:Bool) {
-        print("DI PRACTICE ",isStart)
+    func sendMessage(isStart:String) {
+        //print("DI PRACTICE ",isStart)
         
         let dataMessage = ["isStartPractice": isStart]
         model.wcSession.sendMessage(dataMessage, replyHandler: nil)
@@ -84,6 +84,6 @@ struct PracticeView: View {
 
 struct PracticeView_Previews: PreviewProvider {
     static var previews: some View {
-        PracticeView(isStartPractice: .constant(true))
+        PracticeView()
     }
 }

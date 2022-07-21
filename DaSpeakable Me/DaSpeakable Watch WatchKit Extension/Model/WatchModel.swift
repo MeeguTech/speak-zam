@@ -25,7 +25,7 @@ class WatchModel: NSObject, WCSessionDelegate, ObservableObject{
     @Published var dataPracticeFwEh: Int = 0
     @Published var dataPracticeFwHa: Int = 0
     @Published var dataPracticeFwHm: Int = 0
-    @Published var dataPracticeOverallScore: Double = 0
+    //@Published var dataPracticeOverallScore: Double = 0
     
     //init session and activate watch connectivity
     init(session: WCSession = .default){
@@ -50,7 +50,7 @@ class WatchModel: NSObject, WCSessionDelegate, ObservableObject{
             self.dataPracticeFwEh = message["dataPracticeFwEh"] as? Int ?? 0
             self.dataPracticeFwHa = message["dataPracticeFwHa"] as? Int ?? 0
             self.dataPracticeFwHm = message["dataPracticeFwHm"] as? Int ?? 0
-            self.dataPracticeOverallScore = message["dataPracticeOverallScore"] as? Double ?? 0
+            //self.dataPracticeOverallScore = message["dataPracticeOverallScore"] as? Double ?? 0
         }
 
     }

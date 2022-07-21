@@ -12,7 +12,16 @@ struct ResultCellCustom: View {
     
     //let practice = model.dataPractice
     
+    @State var wpm : Double = 0.0
+    @State var articulation : Double = 0.0
+    @State var smothRate : Double = 0.0
+    @State var fillerWords : Double = 0.0
+    
     var body: some View{
+        
+//        onAppear(){
+//            wpm = model.dataPracticeWPM
+//        }
 
         HStack{
             Text("Speaking Pace")
@@ -29,7 +38,8 @@ struct ResultCellCustom: View {
                 .font(.system(size: 20))
             Spacer()
             //Text(" : \(Int(model.dataPracticeArticulation))")
-            Text(" : \(String(model.dataPracticeArticulation))")
+            //String(format: "%.2f", tip)
+            Text(" : \(String(format: "%.0f", model.dataPracticeArticulation))")
                 .font(.system(size: 20, weight: .semibold))
         }
         

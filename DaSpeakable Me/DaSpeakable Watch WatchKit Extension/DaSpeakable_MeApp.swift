@@ -9,13 +9,21 @@ import SwiftUI
 
 @main
 struct DaSpeakable_MeApp: App {
+    
+    @ObservedObject var model = WatchModel()
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                StartPracticeView()
-                //StartPracticeView(isStartPractice:.c )
                 
-                //OpeningView(isOnPracticeScreen: .constant(true))
+//                switch model.isOnPracticeScreen{
+//                case true:
+//                    StartPracticeView()
+//                case false:
+//                    ConnectionView()
+//                }
+                
+                ConnectionView(isOnPractice: .constant(model.isOnPracticeScreen))
             }
         }
     }

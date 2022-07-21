@@ -9,13 +9,10 @@ import SwiftUI
 
 struct ConnectionView: View {
     
-    @ObservedObject var model = WatchModel()
-    
-    @State var isOnPreactice: Bool = false
+    @Binding var isOnPractice: Bool
     
     var body: some View {
-        if model.isOnPracticeScreen{
-            
+        if isOnPractice{
             StartPracticeView()
         }else{
             VStack(alignment:.leading) {
@@ -27,11 +24,13 @@ struct ConnectionView: View {
                     .font(.system(size: 16))
             }
         }
+        
+        
     }
 }
 
 struct ConnectionView_Previews: PreviewProvider {
     static var previews: some View {
-        ConnectionView()
+        ConnectionView(isOnPractice: .constant(false))
     }
 }

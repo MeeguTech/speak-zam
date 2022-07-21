@@ -57,7 +57,7 @@
 		ACAD10EA28856A9C00CD7B65 /* WatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAD10E928856A9C00CD7B65 /* WatchModel.swift */; };
 		ACAD10ED28856FDD00CD7B65 /* WatchConnectivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAD10EC28856FDD00CD7B65 /* WatchConnectivityService.swift */; };
 		ACAFEA372869C0B500EE148D /* SpeakHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFEA362869C0B500EE148D /* SpeakHelper.swift */; };
-		ACC0D9922885A9250023B9E5 /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC0D9912885A9250023B9E5 /* RecordingView.swift */; };
+		ACB5171F2889278500F08FC8 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5171E2889278500F08FC8 /* Connectivity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,7 +168,7 @@
 		ACAD10E928856A9C00CD7B65 /* WatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchModel.swift; sourceTree = "<group>"; };
 		ACAD10EC28856FDD00CD7B65 /* WatchConnectivityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityService.swift; sourceTree = "<group>"; };
 		ACAFEA362869C0B500EE148D /* SpeakHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakHelper.swift; sourceTree = "<group>"; };
-		ACC0D9912885A9250023B9E5 /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
+		ACB5171E2889278500F08FC8 /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,7 +314,6 @@
 		AC4C43C1286609E200CAEFB7 = {
 			isa = PBXGroup;
 			children = (
-				ACC0D9902885A8EB0023B9E5 /* Shared */,
 				AC4C43CC286609E200CAEFB7 /* DaSpeakable Me */,
 				AC4C43E6286609E300CAEFB7 /* DaSpeakable MeTests */,
 				AC4C43F0286609E300CAEFB7 /* DaSpeakable MeUITests */,
@@ -339,6 +338,7 @@
 		AC4C43CC286609E200CAEFB7 /* DaSpeakable Me */ = {
 			isa = PBXGroup;
 			children = (
+				ACB5171D2889277700F08FC8 /* Shared */,
 				AC4C44062866136800CAEFB7 /* FillerWordClassifier.mlmodel */,
 				AC4C440328660A1800CAEFB7 /* Core */,
 				6390BCFB287D53B00079302B /* Services */,
@@ -450,10 +450,10 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
-		ACC0D9902885A8EB0023B9E5 /* Shared */ = {
+		ACB5171D2889277700F08FC8 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				ACC0D9912885A9250023B9E5 /* RecordingView.swift */,
+				ACB5171E2889278500F08FC8 /* Connectivity.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -721,6 +721,7 @@
 				AC790B82286AD35700368799 /* TimeHelper.swift in Sources */,
 				6390BCFF287D54970079302B /* PracticeService.swift in Sources */,
 				6390BCFD287D53DB0079302B /* ContextService.swift in Sources */,
+				ACB5171F2889278500F08FC8 /* Connectivity.swift in Sources */,
 				AC4C43CE286609E200CAEFB7 /* AppDelegate.swift in Sources */,
 				6390BCF6287C46020079302B /* PracticeDataModel.xcdatamodeld in Sources */,
 				ACAD10ED28856FDD00CD7B65 /* WatchConnectivityService.swift in Sources */,
@@ -730,7 +731,6 @@
 				63A2E205286EF02400C67464 /* PracticeTableViewCell.swift in Sources */,
 				6390BCF9287C6D370079302B /* Practice+CoreDataClass.swift in Sources */,
 				63A2E217286F37A700C67464 /* ResultTableViewCell.swift in Sources */,
-				ACC0D9922885A9250023B9E5 /* RecordingView.swift in Sources */,
 				AC4C43D0286609E200CAEFB7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -804,7 +804,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DaSpeakable Watch WatchKit Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = Z89G6VHQ8A;
+				DEVELOPMENT_TEAM = R495F663N6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DaSpeakable Watch WatchKit Extension/Info.plist";
@@ -835,7 +835,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DaSpeakable Watch WatchKit Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = Z89G6VHQ8A;
+				DEVELOPMENT_TEAM = R495F663N6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DaSpeakable Watch WatchKit Extension/Info.plist";
@@ -867,7 +867,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z89G6VHQ8A;
+				DEVELOPMENT_TEAM = R495F663N6;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = DaSpeakable_Watch_WatchKit_Extension;
 				INFOPLIST_KEY_CFBundleDisplayName = "DaSpeakable Watch";
@@ -894,7 +894,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z89G6VHQ8A;
+				DEVELOPMENT_TEAM = R495F663N6;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = DaSpeakable_Watch_WatchKit_Extension;
 				INFOPLIST_KEY_CFBundleDisplayName = "DaSpeakable Watch";
@@ -1033,7 +1033,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z89G6VHQ8A;
+				DEVELOPMENT_TEAM = R495F663N6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DaSpeakable Me/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = SpeakZam;
@@ -1070,7 +1070,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z89G6VHQ8A;
+				DEVELOPMENT_TEAM = R495F663N6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DaSpeakable Me/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = SpeakZam;
@@ -1107,7 +1107,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z89G6VHQ8A;
+				DEVELOPMENT_TEAM = R495F663N6;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
@@ -1127,7 +1127,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z89G6VHQ8A;
+				DEVELOPMENT_TEAM = R495F663N6;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
@@ -1146,7 +1146,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z89G6VHQ8A;
+				DEVELOPMENT_TEAM = R495F663N6;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "gilapo.DaSpeakable-MeUITests";
@@ -1164,7 +1164,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z89G6VHQ8A;
+				DEVELOPMENT_TEAM = R495F663N6;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "gilapo.DaSpeakable-MeUITests";

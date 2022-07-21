@@ -137,7 +137,7 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         watchConn.delegate = self
         
-        isOpenPractice.toggle()
+        isOpenPractice = true
         sendMessage(isOnPracticeScreen:isOpenPractice)
         practiceButton.isUserInteractionEnabled = false
         practiceButton.tintColor = UIColor(named: "Winter")
@@ -162,12 +162,15 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        //watchConn.delegate = self
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        isOpenPractice.toggle()
+        
+        isOpenPractice = false
         sendMessage(isOnPracticeScreen:isOpenPractice)
-        //print(isOpenPractice)
+        watchConn.delegate = self
+        print("closed screen is open practice screen = ",isOpenPractice)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -181,6 +184,7 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
         // Configure the SFSpeechRecognizer object already
         // stored in a local member variable.
         speechRecognizer.delegate = self
+        watchConn.delegate = self
         
         // Asynchronously make the authorization request.
         SFSpeechRecognizer.requestAuthorization { authStatus in
@@ -216,8 +220,8 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
         //print(message)
         // MARK: Send message menggunakan WCSession
         
-        let dataMessage = ["isOnPracticeScreen":isOnPracticeScreen]
-        watchConn.wcSession.sendMessage(dataMessage, replyHandler: nil)
+        let dataMessage = ["inOnPracticeScreen":isOnPracticeScreen]
+        watchConn.wcSession.sendMessage(dataMessage, replyHandler: nil, errorHandler: {error in print(error)})
     }
     
     func sendCurrentScreen(currentScreen: String) {
@@ -228,7 +232,7 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
         //watchConn.wcSession.sendMessage(dataCurrentScreen, replyHandler: nil)
     }
     
-    func sendPracticeData(dataPracticeTitle: String, dataPracticeWPM: Double, dataPracticeArticulation: Double, dataPracticeSmoothRate: Double, dataPracticeVideoUrl: String, dataPracticeFwEh: Int, dataPracticeFwHa: Int, dataPracticeFwHm: Int, dataPracticeOverallScore: Double) {
+    func sendPracticeData(dataPracticeTitle: String, dataPracticeWPM: Double, dataPracticeArticulation: Double, dataPracticeSmoothRate: Double, dataPracticeVideoUrl: String, dataPracticeFwEh: Int, dataPracticeFwHa: Int, dataPracticeFwHm: Int) {
         //print(message)
         // MARK: Send data practice menggunakan WCSession
         
@@ -239,8 +243,7 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
                             "dataPracticeVideoUrl": dataPracticeVideoUrl,
                             "dataPracticeFwEh": dataPracticeFwEh,
                             "dataPracticeFwHa": dataPracticeFwHa,
-                            "dataPracticeFwHm": dataPracticeFwHm,
-                            "dataPracticeOverallScore" : dataPracticeOverallScore] as [String : Any]
+                            "dataPracticeFwHm": dataPracticeFwHm] as [String : Any]
         
         watchConn.wcSession.sendMessage(dataPractice, replyHandler: nil)
     }
@@ -449,15 +452,18 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
         
     }
     
-    func startPracticeFromWatch(startButtonDidTapped:Bool){
+    func startPracticeFromWatch(startButtonDidTapped:String){
         //print("in IOs from watch", startButtonDidTapped)
-        if startButtonDidTapped{
-            print("in")
-            startPractice()
-        }else if !startButtonDidTapped{ //TODO: compose new logic
-            startPractice()
-            print("out")
+        DispatchQueue.main.async {
+            if startButtonDidTapped == "START"{
+                print("in")
+                self.startPractice()
+            }else if startButtonDidTapped == "FINISH"{
+                self.startPractice()
+                print("out")
+            }
         }
+        
     }
     
     func startPractice(){
@@ -488,8 +494,7 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
                     practiceFwHm: Int64(self.counterFwHm),
                     practiceCurrentDate: TimerHelper().getCurrentDate(),
                     practiceOverallScore: (self.wordsPerMinutes + self.clearRate + self.smoothRate)/3)
-                
-                
+
                 self.sendPracticeData(dataPracticeTitle: "Practice \(self.allPractice.count+1)",
                                       dataPracticeWPM: self.wordsPerMinutes,
                                       dataPracticeArticulation: self.clearRate,
@@ -497,8 +502,8 @@ class RecordingViewController: UIViewController, SFSpeechRecognizerDelegate {
                                       dataPracticeVideoUrl: self.cameraConfig.getVideoUrl(),
                                       dataPracticeFwEh: self.counterFwEh,
                                       dataPracticeFwHa: self.counterFwHa,
-                                      dataPracticeFwHm: self.counterFwHm,
-                                      dataPracticeOverallScore: ((self.wordsPerMinutes + self.clearRate + self.smoothRate)/3))
+                                      dataPracticeFwHm: self.counterFwHm)
+//                                      dataPracticeOverallScore: ((self.wordsPerMinutes + self.clearRate + self.smoothRate)/3))
                 
                 let resultVc = UIStoryboard(name: "ResultStoryboard", bundle: nil).instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
                 
@@ -630,7 +635,7 @@ extension RecordingViewController: SNResultsObserving {
 }
 
 extension RecordingViewController: WatchConnectivityServiceDelegate{
-    func startPractice(isStart: Bool) {
+    func startPractice(isStart: String) {
         startPracticeFromWatch(startButtonDidTapped:isStart)
     }
 }

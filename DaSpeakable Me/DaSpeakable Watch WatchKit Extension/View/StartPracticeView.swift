@@ -19,11 +19,11 @@ struct StartPracticeView: View {
     var body: some View {
         NavigationView{
             VStack() {
-                NavigationLink(destination: PracticeView(isStartPractice: $isStartPractice), tag: 1, selection: $selection)  {
+                NavigationLink(destination: PracticeView(), tag: 1, selection: $selection)  {
                     Button(action: {
                         self.selection = 1
-                        isStartPractice.toggle()
-                        sendMessage(isStart: isStartPractice)
+                        //isStartPractice.toggle()
+                        sendMessage(isStart: "START")
                     }) {
                         
                         Image(systemName: "play.fill")
@@ -44,9 +44,13 @@ struct StartPracticeView: View {
         }
     }
     
-    func sendMessage(isStart:Bool) {
-        print("INI DI START",isStart)
-        
+//    func sendMessage(isStart:Bool) {
+//        print("INI DI START",isStart)
+//        let dataMessage = ["isStartPractice": isStart]
+//        model.wcSession.sendMessage(dataMessage, replyHandler: nil)
+//    }
+    func sendMessage(isStart:String) {
+        //print("INI DI START",isStart)
         let dataMessage = ["isStartPractice": isStart]
         model.wcSession.sendMessage(dataMessage, replyHandler: nil)
     }
